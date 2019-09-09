@@ -10,12 +10,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="../Css/Style2.css">
+        <link rel="shortcut icon" href="[favicon.ico](http://www.sitepoint.com/forums/view-source:http://www.pmob.co.uk/favicon.ico)" type="image/x-icon" />
         <title>Magazines online</title>
     </head>
     <body>
         <header >
-            <%@include file="../Html/menu-bar.html" %>
-        </header>     
+        
+        </header>   
+        <div class="content1">
+                das
+               
+            </div>  
          <div class="contenedor">
             
 

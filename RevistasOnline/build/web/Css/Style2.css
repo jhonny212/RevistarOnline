@@ -7,6 +7,13 @@ width: 100%;
 position: relative;
 display: flex;
 }
+.content1{
+    background-color: rgb(48, 46, 134) ;
+    height: 700px;
+    width: 100%;
+    position: relative;
+    display: flex;
+  }
 .contenedor:before{
 content: "";    
 height: 100%;
@@ -16,4 +23,9 @@ background-color:blue;
 position: absolute;
 opacity: 0.5;
 
+}
+
+
+body{
+    background-color: rgb(92, 86, 86);
 }

@@ -11,11 +11,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
-  static {
-    _jspx_dependants = new java.util.ArrayList<String>(1);
-    _jspx_dependants.add("/Jsp/../Html/menu-bar.html");
-  }
-
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
@@ -54,43 +49,17 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link rel=\"stylesheet\" href=\"../Css/Style2.css\">\n");
+      out.write("        <link rel=\"shortcut icon\" href=\"[favicon.ico](http://www.sitepoint.com/forums/view-source:http://www.pmob.co.uk/favicon.ico)\" type=\"image/x-icon\" />\n");
       out.write("        <title>Magazines online</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <header >\n");
-      out.write("            ");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html lang=\"en\">\n");
-      out.write("<head>\n");
-      out.write("    <meta charset=\"UTF-8\">\n");
-      out.write("    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
-      out.write("    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n");
-      out.write("    <link rel=\"stylesheet\" href=\"../Css/Style1.css\">\n");
-      out.write("    <title>Document</title>\n");
-      out.write("</head>\n");
-      out.write("<body>\n");
-      out.write("    \n");
-      out.write("    <header>\n");
-      out.write("            <nav class=\"navegacion\">\n");
-      out.write("                    <ul class=\"menu\">\n");
-      out.write("                        <li><a href=\"#\">Inicio</a></li>\n");
-      out.write("                        <li><a href=\"#\">Nosotros</a></li>\n");
-      out.write("                        <li><a href=\"#\">Servicios</a>\n");
-      out.write("                            <ul class=\"submenu\">\n");
-      out.write("                                <li><a href=\"#\">Servicio #1</a></li>\n");
-      out.write("                                <li><a href=\"#\">Servicio #2</a></li>\n");
-      out.write("                                <li><a href=\"#\">Servicio #3</a></li>\n");
-      out.write("                            </ul>\n");
-      out.write("                        </li>\n");
-      out.write("                        <li><a href=\"#\">Contacto</a></li>\n");
-      out.write("                    </ul>\n");
-      out.write("                </nav>  \n");
-      out.write("        assa\n");
-      out.write("    </header>\n");
-      out.write("</body>\n");
-      out.write("</html>");
-      out.write("\n");
-      out.write("        </header>     \n");
+      out.write("        \n");
+      out.write("        </header>   \n");
+      out.write("        <div class=\"content1\">\n");
+      out.write("                das\n");
+      out.write("               \n");
+      out.write("            </div>  \n");
       out.write("         <div class=\"contenedor\">\n");
       out.write("            \n");
       out.write("\n");
