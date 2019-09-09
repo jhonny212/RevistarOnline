@@ -1,0 +1,19 @@
+.contenedor{
+background-color: black;
+background-image: url(../Imagenes/fondo.jpg);
+background-size: cover;
+height: 700px;
+width: 100%;
+position: relative;
+display: flex;
+}
+.contenedor:before{
+content: "";    
+height: 100%;
+width: 100%;
+background-color:blue;
+
+position: absolute;
+opacity: 0.5;
+
+}
