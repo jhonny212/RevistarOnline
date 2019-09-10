@@ -22,8 +22,25 @@
             </div> 
 
          <div class="contenedor">
-            
+            <section id="cdos">
+                <article id="login">
+                        
+                </article>
+                
+                <article id="quote">
+                    <h1 >
+                        “Nadie lee anuncios. La gente lee lo que le <br>interesa, y a veces eso es un anuncio.”<br>
+                        – Howard Gossage
+                    </h1>
 
+                   <article id="s">
+
+                   </article>
+                    </article>
+
+                   
+            </section>
+           
 
         </div>    
        
