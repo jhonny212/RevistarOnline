@@ -2,23 +2,23 @@
 background-color: black;
 background-image: url(../Imagenes/fondo.jpg);
 background-size: cover;
-height: 700px;
+height: 600px;
 width: 100%;
 position: relative;
 display: flex;
 }
-.content1{
+.contenedoruno{
     background-color: rgb(48, 46, 134) ;
-    height: 700px;
+    height: 70px;
     width: 100%;
-    position: relative;
-    display: flex;
+  
+  
   }
 .contenedor:before{
 content: "";    
 height: 100%;
 width: 100%;
-background-color:blue;
+background-color:rgb(72, 72, 83);
 
 position: absolute;
 opacity: 0.5;
@@ -27,5 +27,5 @@ opacity: 0.5;
 
 
 body{
-    background-color: rgb(92, 86, 86);
+    background-color: rgb(228, 213, 213);
 }
