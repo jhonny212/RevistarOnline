@@ -2,7 +2,7 @@
 background-color: black;
 background-image: url(../Imagenes/Magazines.jpg);
 background-size: cover;
-height: 550px;
+height: 540px;
 width: 100%;
 position: relative;
 display: flex;
@@ -24,36 +24,49 @@ position: absolute;
 opacity: 0.9;
 
 }
-#quote>h1{
- text-align: justify;
- color: white;
- font-size: 30px;
- font-weight: bold;
- position: relative;
-}
-#login{
+
+#registro{
   height: 300px;
-  width: 50%;
+  width: 30%;
   height: 60%;
-  border: solid blue;
-  margin-left: 50%;
-  
+
+  margin: auto;
+
+  position: relative;
+
+padding: 25px;
 
 }
+#quote>h1{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  position: relative;
+ 
+ 
+ }
 #quote{
-  border: solid ;
- margin-bottom: 2%;
- width: 100%;
+
+ margin: auto;
+ width: 48%;
  text-align: justify;
-  
+ padding-top: 20px;
+ 
+
 }
 section{
   border: solid;
   width: 100%;
 }
-div{
-  border: solid;
-}
+
 body{
     background-color: rgb(228, 213, 213);
 }
+/* height: 300px;
+width: 50%;
+height: 60%;
+border: solid blue;
+margin-left: 50%;
+<%@include file="../Html/formulario-html.html" %>
+*/

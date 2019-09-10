@@ -11,6 +11,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private static java.util.List<String> _jspx_dependants;
 
+  static {
+    _jspx_dependants = new java.util.ArrayList<String>(1);
+    _jspx_dependants.add("/Jsp/../Html/formulario-html.html");
+  }
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
@@ -47,7 +52,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
+      out.write("        \n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
+      out.write("\n");
       out.write("        <link rel=\"stylesheet\" href=\"../Css/Style2.css\">\n");
       out.write("        <title>Magazines online</title>\n");
       out.write("    </head>\n");
@@ -61,8 +68,47 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </div> \n");
       out.write("\n");
       out.write("         <div class=\"contenedor\">\n");
-      out.write("            \n");
+      out.write("            <section id=\"cdos\">\n");
+      out.write("                <article id=\"registro\">\n");
+      out.write("                    ");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html lang=\"en\">\n");
+      out.write("<head>\n");
+      out.write("  <meta charset=\"UTF-8\">\n");
+      out.write("  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
+      out.write("  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n");
+      out.write("  <link rel=\"stylesheet\" href=\"../Css/Style1.css\">\n");
+      out.write("  <title>Document</title>\n");
+      out.write("</head>\n");
+      out.write("<body>\n");
+      out.write("  <form >\n");
+      out.write("  <h2>Iniciar sesion</h2>\n");
+      out.write("  <input type =\"text\" id=\"usuario\" name=\"usuario\" placeholder=\"&#128272; usuario\" /> \n");
       out.write("\n");
+      out.write("  <input type =\"password\" id=\"contraseÃ±a\" name=\"contraseÃ±a\" placeholder=\"&#128272; contraseÃ±a \"/>\n");
+      out.write(" \n");
+      out.write("  \n");
+      out.write(" <input type=\"submit\" value=\"ingresar\">\n");
+      out.write("\n");
+      out.write(" \n");
+      out.write("</form>\n");
+      out.write("</body>\n");
+      out.write("</html>\n");
+      out.write("\n");
+      out.write("                </article>\n");
+      out.write("                \n");
+      out.write("                <article id=\"quote\">\n");
+      out.write("                    <h1 >\n");
+      out.write("                        “Nadie lee anuncios. La gente lee lo que le <br>interesa, y a veces eso es un anuncio.”<br>\n");
+      out.write("                        – Howard Gossage\n");
+      out.write("                    </h1>\n");
+      out.write("\n");
+      out.write("                  \n");
+      out.write("                    </article>\n");
+      out.write("\n");
+      out.write("                   \n");
+      out.write("            </section>\n");
+      out.write("           \n");
       out.write("\n");
       out.write("        </div>    \n");
       out.write("       \n");

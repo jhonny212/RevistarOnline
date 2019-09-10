@@ -18,13 +18,14 @@
         </header>   
         <div class="contenedoruno">
              
-               
+             
             </div> 
 
          <div class="contenedor">
             <section id="cdos">
-                <article id="login">
-                        
+                <article id="registro">
+                    
+                    <%@include  file="../Html/formulario-html.html" %>
                 </article>
                 
                 <article id="quote">
@@ -33,9 +34,7 @@
                         – Howard Gossage
                     </h1>
 
-                   <article id="s">
-
-                   </article>
+                  
                     </article>
 
                    
@@ -43,6 +42,17 @@
            
 
         </div>    
-       
+       <div>
+           <table >
+               <% 
+               for(int i=0; i<8;i++){
+               for(int j=0; j<8;j++){
+               
+               }
+               }
+               %>
+
+        </table>
+       </div>
     </body>
 </html>
