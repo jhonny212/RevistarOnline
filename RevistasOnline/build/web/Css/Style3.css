@@ -1,0 +1,31 @@
+
+.revistas{
+    border: solid;
+    height: 1550px;
+    width: 100%;
+}
+#tabla,th,tr{
+    border: solid;
+}
+#tabla,tr{
+    width: 100%;
+}
+th{
+    width: 33%;
+    height: 500px;
+}
+tr{
+    height: 500px;
+}
+img{
+    height: 380px;
+    width: 400px;
+  
+}
+nav{
+    width: 15%;
+    height: 100%;
+    margin-left: 85%;
+    padding-top: 20px;
+    padding-left: 10px;
+}

@@ -5,21 +5,28 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="classes.methods" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="../Css/Style2.css">
+        <link rel="stylesheet" href="../Css/Style3.css">
+        <link rel="stylesheet" href="../Css/Style4.css">
+        
         <title>Magazines online</title>
     </head>
     <body>
         <header >
-        
+            <div class="contenedoruno">
+             
+                <nav>
+                   <a class="crearcuenta" href="./registrar.jsp">Registrar</a>
+                    
+                </nav>
+                </div> 
         </header>   
-        <div class="contenedoruno">
-             
-             
-            </div> 
+      
 
          <div class="contenedor">
             <section id="cdos">
@@ -42,17 +49,29 @@
            
 
         </div>    
-       <div>
-           <table >
-               <% 
-               for(int i=0; i<8;i++){
-               for(int j=0; j<8;j++){
-               
-               }
-               }
-               %>
-
-        </table>
-       </div>
+        <div class="revistas"  >
+            <table id="tabla">
+                <tr>
+                    <th><img src="../Imagenes/Magazines.jpg" alt="" > </th>
+                    <th><img src="../Imagenes/revista1.jpg" alt=""></th>
+                    <th><img src="../Imagenes/revista2.jpg" alt=""></th>
+                </tr>
+                    
+                    <tr> 
+                    <th><img src="../Imagenes/revista3.jpg" alt=""></th>
+                    <th><img src="../Imagenes/revista4.jpg" alt=""></th>
+                    <th><img src="../Imagenes/revista5.jpg" alt=""></th>
+                    </tr>
+                    
+                    <tr> 
+                    <th><img src="../Imagenes/revista6.jpg" alt=""></th>
+                    <th><img src="../Imagenes/revista7.jpg" alt=""></th>
+                    <th><img src="../Imagenes/revista8.jpg" alt=""></th>
+                    </tr>
+            </table>
+        </div>
+     
+ 
+     
     </body>
 </html>

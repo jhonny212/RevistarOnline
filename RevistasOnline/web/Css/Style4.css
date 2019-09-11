@@ -1,0 +1,18 @@
+a{
+    text-decoration: inherit;
+    background: rgb(219, 141, 39);
+    
+}
+.crearcuenta{
+    color: rgb(245, 239, 239);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 50;
+    font-size: 20px;
+    text-align: center;
+    border: solid 2px rgb(27, 27, 31);
+    border-radius: 50px;
+    padding: 10px 10px;
+}
+.crearcuenta:hover{
+    background-color: orange;
+}
