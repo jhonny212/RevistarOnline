@@ -11,9 +11,6 @@ package classes;
  */
 public class methods {
     
-    public String table(int x1,int x2){
-       
-        return "a";
-    }
+    
    
 }

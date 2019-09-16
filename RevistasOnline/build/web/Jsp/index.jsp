@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="../Css/Style2.css">
-        <link rel="stylesheet" href="../Css/Style3.css">
+        <link rel="stylesheet" href="../Css/diseño3.css">
         <link rel="stylesheet" href="../Css/Style4.css">
         
         <title>Magazines online</title>
