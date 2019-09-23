@@ -4,8 +4,10 @@
     Author     : jhonny
 --%>
 
+<%@page import="classes.iniciarConeccion"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="classes.methods" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,6 +19,7 @@
         <title>Magazines online</title>
     </head>
     <body>
+      
         <header >
             <div class="contenedoruno">
              
@@ -26,13 +29,20 @@
                 </nav>
                 </div> 
         </header>   
-      
+        <% 
+        iniciarConeccion a=new iniciarConeccion();
+        a.IniciarConeccion();
+        
+
+        %>
+        
 
          <div class="contenedor">
             <section id="cdos">
                 <article id="registro">
                     
                     <%@include  file="../Html/formulario-html.html" %>
+                    
                 </article>
                 
                 <article id="quote">

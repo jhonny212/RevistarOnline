@@ -3,9 +3,8 @@ package org.apache.jsp.Jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import javax.swing.JFileChooser;
 
-public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class perfil_002dusuario_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -45,7 +44,6 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -54,9 +52,6 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    </head>\n");
       out.write("    <body>\n");
       out.write("        <h1>Hello World!</h1>\n");
-      out.write("        \n");
-      out.write("        ");
-     out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

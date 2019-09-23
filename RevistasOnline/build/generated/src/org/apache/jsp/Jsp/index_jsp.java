@@ -3,7 +3,7 @@ package org.apache.jsp.Jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
-import classes.methods;
+import classes.iniciarConeccion;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -51,6 +51,8 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -62,6 +64,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <title>Magazines online</title>\n");
       out.write("    </head>\n");
       out.write("    <body>\n");
+      out.write("      \n");
       out.write("        <header >\n");
       out.write("            <div class=\"contenedoruno\">\n");
       out.write("             \n");
@@ -71,7 +74,15 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </nav>\n");
       out.write("                </div> \n");
       out.write("        </header>   \n");
-      out.write("      \n");
+      out.write("        ");
+ 
+        iniciarConeccion a=new iniciarConeccion();
+        a.IniciarConeccion();
+        
+
+        
+      out.write("\n");
+      out.write("        \n");
       out.write("\n");
       out.write("         <div class=\"contenedor\">\n");
       out.write("            <section id=\"cdos\">\n");
@@ -84,11 +95,11 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <meta charset=\"UTF-8\">\n");
       out.write("  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n");
       out.write("  <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n");
-      out.write("  <link rel=\"stylesheet\" href=\"../Css/Style1.css\">\n");
+      out.write("  <link rel=\"stylesheet\" href=\"../Css/menu-bar-estilo.css\">\n");
       out.write("  <title>Document</title>\n");
       out.write("</head>\n");
       out.write("<body>\n");
-      out.write("  <form action=\"\">\n");
+      out.write("  <form action=\"../Jsp/magazine.jsp\">\n");
       out.write("  <h2>Iniciar sesion</h2>\n");
       out.write("  <input type =\"text\" id=\"usuario\" name=\"usuario\" placeholder=\"&#128272; usuario\" /> \n");
       out.write("\n");
@@ -102,6 +113,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</body>\n");
       out.write("</html>\n");
       out.write("\n");
+      out.write("                    \n");
       out.write("                </article>\n");
       out.write("                \n");
       out.write("                <article id=\"quote\">\n");

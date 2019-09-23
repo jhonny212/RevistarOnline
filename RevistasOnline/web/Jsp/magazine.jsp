@@ -40,17 +40,12 @@
         <div class="sidebar">
             <h2>MENU</h2>
             <ul>
-                <li><a href="">Inicio</a></li>
-                <li><a href="">Servicios</a></li>
+                <li><a href="">Cerrar sesion</a></li>
+                <li><a href="../Jsp/perfil-usuario.jsp">Perfil</a></li>
                 <li><a href="">Productos</a></li>
                 <li><a href="">Contacto</a></li>
 
-              
-                <li><a href="">Inicio</a></li>
-                <li><a href="">Servicios</a></li>
-                <li><a href="">Productos</a></li>
-                <li><a href="">Contacto</a></li>
-
+             
 
               
 
@@ -85,7 +80,7 @@
               
         </div>
    
-        </script>
+    
        
               <script src="../Js/abrir.js"></script>
         </body>

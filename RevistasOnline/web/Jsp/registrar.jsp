@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="classes.usuario"  %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,8 +13,30 @@
         <title>JSP Page</title>
     </head>
     <body>
-       
+        
+        
+        
+        <div >
+                  
+                    <%@include  file="../Html/formregistro.html" %>
+                    
+                   
+                    
+        </div>
+                    <% int a;
+                    a=2;
+                    
+                     if(usuario.getMessage()!=null){
+                     String alert="alert('"+"Este usuario ya existe"+"');";
+                     out.print("<script>"+alert+"</script>");
+                     }   
+                    
+                    %>
+   
     
+             
+
+     
        
     
     </body>

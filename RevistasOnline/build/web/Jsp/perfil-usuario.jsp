@@ -12,6 +12,14 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <header>
+            <nav >
+            <%@include  file="../Html/menu-bar.html" %>
+       
+            </nav>
+        </header>
+        
+       <%@include  file="../Html/perfil-usuario.html" %>
+                    
     </body>
 </html>

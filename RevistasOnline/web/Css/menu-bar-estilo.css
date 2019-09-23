@@ -10,13 +10,13 @@
 
 header{
 	width: 100%;
-        background: gold;
+	background: rgb(14, 45, 85);
 }
 
 .navegacion{
 	width: 1000px;
 	margin:auto;
-	background: gold;
+	background: rgb(14, 45, 85);
 }
 
 .navegacion ul{
@@ -31,20 +31,22 @@ header{
 .menu > li > a{
 	display: block;
 	padding: 15px 20px;
-	color: #353535;
+	color: #fcf8f8;
 	font-family: 'Open sans';
 	text-decoration: none;
         text-align: center;
 }
 
 .menu li a:hover{
-	color: #CE7D35;
+	color: rgb(206, 53, 53);
 	transition: all .3s;
-             text-align: center;
+			 text-align: center;
+	background-color: rgb(161, 156, 156);
+	opacity: 0.5;		 
 }
 
 /* Submenu*/
-
+/*
 .submenu{
 	position: absolute;
 	background: #333333;
@@ -66,7 +68,7 @@ header{
 	visibility: visible;
 	opacity: 1;
 }
-
+*/
 
 form{
 	width: 100%;
