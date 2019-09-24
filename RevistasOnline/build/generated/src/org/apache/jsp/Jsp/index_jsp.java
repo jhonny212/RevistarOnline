@@ -4,6 +4,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import classes.iniciarConeccion;
+import classes.usuario;
+import servlets.iniciarSesion;
 
 public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -53,6 +55,9 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -83,6 +88,8 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
         
       out.write("\n");
       out.write("        \n");
+      out.write("                  \n");
+      out.write("        \n");
       out.write("\n");
       out.write("         <div class=\"contenedor\">\n");
       out.write("            <section id=\"cdos\">\n");
@@ -99,21 +106,34 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("  <title>Document</title>\n");
       out.write("</head>\n");
       out.write("<body>\n");
-      out.write("  <form action=\"../Jsp/magazine.jsp\">\n");
+      out.write("  <form action=\"/RevistasOnline/iniciarSesion\" method=\"POST\" >\n");
       out.write("  <h2>Iniciar sesion</h2>\n");
-      out.write("  <input type =\"text\" id=\"usuario\" name=\"usuario\" placeholder=\"&#128272; usuario\" /> \n");
+      out.write("  <input type =\"text\" id=\"usuario\" name=\"usuario\" placeholder=\"&#128272; usuario \" required/> \n");
       out.write("\n");
-      out.write("  <input type =\"password\" id=\"contraseÃ±a\" name=\"contraseÃ±a\" placeholder=\"&#128272; contraseÃ±a \"/>\n");
+      out.write("  <input type =\"password\" id=\"contraseÃ±a\" name=\"password\" required placeholder=\"&#128272; contraseÃ±a \"/>\n");
       out.write(" \n");
       out.write("  \n");
-      out.write(" <input type=\"submit\" value=\"ingresar\">\n");
+      out.write(" <input type=\"submit\" name =\"btn\" value=\"ingresar\">\n");
       out.write("\n");
       out.write(" \n");
       out.write("</form>\n");
       out.write("</body>\n");
       out.write("</html>\n");
       out.write("\n");
-      out.write("                    \n");
+      out.write("                          ");
+ 
+                        if(usuario.message!=null){
+                            out.print(usuario.message);
+                      if(usuario.message.equals("correcto")){
+                    
+       HttpSession sesion=request.getSession();
+       sesion.setAttribute("usuario",iniciarSesion.user);
+       sesion.setAttribute("usuario",iniciarSesion.pass);
+       response.sendRedirect("newjsp.jsp");
+            }}
+                    
+      out.write("\n");
+      out.write("                  \n");
       out.write("                </article>\n");
       out.write("                \n");
       out.write("                <article id=\"quote\">\n");

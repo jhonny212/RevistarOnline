@@ -8,14 +8,14 @@
   <title>Document</title>
 </head>
 <body>
-  <form action="../Jsp/magazine.jsp">
+  <form action="/RevistasOnline/iniciarSesion" method="POST" >
   <h2>Iniciar sesion</h2>
-  <input type ="text" id="usuario" name="usuario" placeholder="&#128272; usuario" /> 
+  <input type ="text" id="usuario" name="usuario" placeholder="&#128272; usuario " required/> 
 
-  <input type ="password" id="contraseña" name="contraseña" placeholder="&#128272; contraseña "/>
+  <input type ="password" id="contraseña" name="password" required placeholder="&#128272; contraseña "/>
  
   
- <input type="submit" value="ingresar">
+ <input type="submit" name ="btn" value="ingresar">
 
  
 </form>

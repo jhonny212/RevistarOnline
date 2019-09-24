@@ -6,7 +6,9 @@
 package classes;
 
 
+import com.mysql.cj.protocol.Resultset;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class usuario {
     
-    public static String message;
+    public static String message=null;
 
     public static String getMessage() {
         return message;
@@ -43,6 +45,9 @@ public class usuario {
     message=null;
     
     }
+    
+  
+    
 
     public String getNombre() {
         return nombre;
@@ -70,11 +75,17 @@ public class usuario {
     public static void iniciarSesion(String user, String contraseña ){
     
         try {
-            PreparedStatement iniciarSesion =iniciarConeccion.coneccion.prepareStatement("SELECT usuario.user, usuario.password"
-                    + "FROM usuario WHERE  VALUES (?,?,?,?,?,?)");
-            
-           
-            message=null;
+           PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement("SELECT usuario.user, usuario.password FROM usuario WHERE user=? && password=?");
+     
+           iniciarSesion.setString(1, user);
+           iniciarSesion.setString(2, contraseña);
+           ResultSet sesion=iniciarSesion.executeQuery();
+           message=null;
+           message="";
+           while(sesion.next()){
+            message="correcto";
+           }
+              
             } catch (SQLException ex) {
                 message=ex.getMessage();
             
@@ -108,8 +119,9 @@ public class usuario {
             crearUser.setString(6, user.getContraseña());
             crearUser.executeUpdate();
             message=null;
+            message="registrado";
             } catch (SQLException ex) {
-                message=ex.getMessage();
+                message="error";
             
             }catch (ParseException e) {
          

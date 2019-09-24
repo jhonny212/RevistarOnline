@@ -3,6 +3,8 @@ package org.apache.jsp.Jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.util.LinkedList;
+import classes.categoria;
 
 public final class magazine_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -44,6 +46,9 @@ public final class magazine_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("\n");
       out.write("<html>\n");
@@ -79,22 +84,19 @@ public final class magazine_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <div class=\"sidebar\">\n");
       out.write("            <h2>MENU</h2>\n");
       out.write("            <ul>\n");
-      out.write("                <li><a href=\"\">Inicio</a></li>\n");
-      out.write("                <li><a href=\"\">Servicios</a></li>\n");
-      out.write("                <li><a href=\"\">Productos</a></li>\n");
-      out.write("                <li><a href=\"\">Contacto</a></li>\n");
-      out.write("\n");
-      out.write("              \n");
-      out.write("                <li><a href=\"\">Inicio</a></li>\n");
-      out.write("                <li><a href=\"\">Servicios</a></li>\n");
-      out.write("                <li><a href=\"\">Productos</a></li>\n");
-      out.write("                <li><a href=\"\">Contacto</a></li>\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("              \n");
+      out.write("                <li><a href=\"\">Cerrar sesion</a></li>\n");
+      out.write("                <li><a href=\"../Jsp/perfil-usuario.jsp\">Perfil</a></li>\n");
+      out.write("                ");
+
+                    LinkedList <String> tmp=categoria.llenarCategoria();
+                char a='"';    
+                
+                for(int i=0; i<categoria.llenarCategoria().size(); i++){
+                out.print("<li><a href=''>"+tmp.get(i)+"</a></li>");
+                }
+                
       out.write("\n");
       out.write("                \n");
-      out.write("\n");
       out.write("\n");
       out.write("            </ul>\n");
       out.write("        </div>\n");
@@ -124,7 +126,7 @@ public final class magazine_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("              \n");
       out.write("        </div>\n");
       out.write("   \n");
-      out.write("    \n");
+      out.write("      \n");
       out.write("       \n");
       out.write("              <script src=\"../Js/abrir.js\"></script>\n");
       out.write("        </body>\n");

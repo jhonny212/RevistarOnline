@@ -14,14 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import classes.usuario;
-import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -88,27 +81,27 @@ public class crearUsuario extends HttpServlet {
              usuario user=new usuario(request);
         user.registrarUsuario(user);
         
-        if(usuario.message!=null){
+        if(usuario.message.equals("registrado")){
                  try {
+                     // RequestDispatcher dispatcher = request.getRequestDispatcher("Jsp/registrar.jsp");
+                     
+                     
+                     response.sendRedirect("Jsp/magazine.jsp");
+                     //request.setAttribute("error", true);
+                     //dispatcher.forward(request, response);
+                 } catch (IOException ex) {
+                 }
+                      
+               
+        }else{
+        
+  try {
                      // RequestDispatcher dispatcher = request.getRequestDispatcher("Jsp/registrar.jsp");
                      
                      
                      response.sendRedirect("Jsp/registrar.jsp");
                      //request.setAttribute("error", true);
                      //dispatcher.forward(request, response);
-                 } catch (IOException ex) {
-                     Logger.getLogger(crearUsuario.class.getName()).log(Level.SEVERE, null, ex);
-                 }
-                      
-               
-        }else{
-        
-          RequestDispatcher dispatcher = request.getRequestDispatcher("/registrar.jsp");
-                 try {
-                     dispatcher.forward(request, response);
-                      request.setAttribute("error", true);
-                 } catch (ServletException ex) {
-                 
                  } catch (IOException ex) {
                  }
         }

@@ -4,7 +4,10 @@
     Author     : jhonny
 --%>
 
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="classes.categoria"  %>
+<%@page  session="true" %>
 <!DOCTYPE html>
 
 <html>
@@ -42,15 +45,15 @@
             <ul>
                 <li><a href="">Cerrar sesion</a></li>
                 <li><a href="../Jsp/perfil-usuario.jsp">Perfil</a></li>
-                <li><a href="">Productos</a></li>
-                <li><a href="">Contacto</a></li>
-
-             
-
-              
-
+                <%
+                    LinkedList <String> tmp=categoria.llenarCategoria();
+                char a='"';    
+                String cadena=Character.toString(a);
+                for(int i=0; i<categoria.llenarCategoria().size(); i++){
+                out.print("<li><a href="+cadena+"#"+cadena +">"+tmp.get(i)+"</a></li>");
+                }
+                %>
                 
-
 
             </ul>
         </div>
@@ -80,7 +83,7 @@
               
         </div>
    
-    
+      
        
               <script src="../Js/abrir.js"></script>
         </body>

@@ -7,6 +7,9 @@
 <%@page import="classes.iniciarConeccion"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="classes.usuario"  %>
+<%@page import="servlets.iniciarSesion"  %>
+<%@page  session="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -36,13 +39,26 @@
 
         %>
         
+                  
+        
 
          <div class="contenedor">
             <section id="cdos">
                 <article id="registro">
                     
                     <%@include  file="../Html/formulario-html.html" %>
+                          <% 
+                        if(usuario.message!=null){
+                            out.print(usuario.message);
+                      if(usuario.message.equals("correcto")){
                     
+       HttpSession sesion=request.getSession();
+       sesion.setAttribute("usuario",iniciarSesion.user);
+       sesion.setAttribute("usuario",iniciarSesion.pass);
+       response.sendRedirect("magazine.jsp");
+            }}
+                    %>
+                  
                 </article>
                 
                 <article id="quote">

@@ -23,14 +23,16 @@
                    
                     
         </div>
-                    <% int a;
-                    a=2;
-                    
-                     if(usuario.getMessage()!=null){
+                    <%
+                        if(usuario.message!=null){
+                            if(usuario.message.equals("error")){
                      String alert="alert('"+"Este usuario ya existe"+"');";
                      out.print("<script>"+alert+"</script>");
-                     }   
-                    
+                     
+                            }   
+                    usuario.message=null;
+                        }
+                     
                     %>
    
     

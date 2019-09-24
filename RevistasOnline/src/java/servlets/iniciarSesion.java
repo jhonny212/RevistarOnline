@@ -5,6 +5,7 @@
  */
 package servlets;
 
+import classes.iniciarConeccion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import classes.usuario;
+
 
 /**
  *
@@ -19,7 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "iniciarSesion", urlPatterns = {"/iniciarSesion"})
 public class iniciarSesion extends HttpServlet {
-
+public static String user;
+public static String pass;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -75,16 +79,44 @@ public class iniciarSesion extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            
-
-            
-            throws ServletException, IOException {
+    {
+        usuario.iniciarSesion(request.getParameter("usuario"),request.getParameter("password"));
       
-                    PrintWriter salida=response.getWriter();
-                    salida.println("<html><body>");
-                    salida.println("<h1> aaaa</h1>");
-                    
-                    salida.println("</body></html>");
+        
+        
+        
+               
+               if(usuario.message.equals("correcto")){
+                 try {
+                     // RequestDispatcher dispatcher = request.getRequestDispatcher("Jsp/registrar.jsp");
+                     user=null;
+                     user=request.getParameter("usuario");
+                     pass=null;
+                     pass=request.getParameter("password");
+                     
+                     response.sendRedirect("Jsp/index.jsp");
+                 
+                     //request.setAttribute("error", true);
+                     //dispatcher.forward(request, response);
+                 } catch (IOException ex) {
+                 }
+                      
+               
+        }else {
+        
+            try {
+                     // RequestDispatcher dispatcher = request.getRequestDispatcher("Jsp/registrar.jsp");
+                     
+                     
+                     response.sendRedirect("Jsp/index.jsp");
+                     //request.setAttribute("error", true);
+                     //dispatcher.forward(request, response);
+                 } catch (IOException ex) {
+                 }
+        }
+           
+      
+        
                     
     }
 
