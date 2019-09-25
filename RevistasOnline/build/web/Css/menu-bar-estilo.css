@@ -89,6 +89,7 @@ input{
 	width: 100%;
 	font-size: 15px;
 }
+
 input[type="submit"]{
 	background: linear-gradient( rgb(9, 36, 71), rgb(48, 73, 119));
 	color: white;

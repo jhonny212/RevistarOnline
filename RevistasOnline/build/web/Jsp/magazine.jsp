@@ -47,10 +47,12 @@
                 <li><a href="../Jsp/perfil-usuario.jsp">Perfil</a></li>
                 <%
                     LinkedList <String> tmp=categoria.llenarCategoria();
+                    tmp.add("as");
+                    tmp.add("as");
                 char a='"';    
                 String cadena=Character.toString(a);
-                for(int i=0; i<categoria.llenarCategoria().size(); i++){
-                out.print("<li><a href="+cadena+"#"+cadena +">"+tmp.get(i)+"</a></li>");
+                for(int i=0; i<tmp.size(); i++){
+                out.print("<li><a href="+cadena+"revistas.jsp?name="+tmp.get(i)+cadena +">"+tmp.get(i)+"</a></li>");
                 }
                 %>
                 

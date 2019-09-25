@@ -129,7 +129,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
        HttpSession sesion=request.getSession();
        sesion.setAttribute("usuario",iniciarSesion.user);
        sesion.setAttribute("usuario",iniciarSesion.pass);
-       response.sendRedirect("newjsp.jsp");
+       response.sendRedirect("magazine.jsp");
             }}
                     
       out.write("\n");

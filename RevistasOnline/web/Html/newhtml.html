@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <link rel="stylesheet" href="../Css/menu-bar-estilo.css">
+            <link rel="stylesheet" href="../Css/revistas-editor.css">
+        <title>JSP Page</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+function check(e)
+{
+if (document.form.elements[e-1].checked==true){document.form.elements[e].disabled=false}
+if (document.form.elements[e-1].checked==false){document.form.elements[e].disabled=true}
+}
+</script>
+         <nav class="navegacion">
+                <ul class="menu">
+                    <li><a href="#">Cerrar sesion</a></li>
+                    <li><a href="../Jsp/revistasEditor.jsp">Revistas</a></li>
+                    <li><a href="#">perfil</a></li>
+                                                
+                </ul>
+            </nav>  
+
+         <div class="contenedor">
+          <form name="form">
+          
+            <div id="categoria">
+                <input type="checkbox" name="check1" onclick="check(1)" />
+                <input type="text" name="text1" disabled /> 
+            </div>
+          
+            <div id="datos"> 
+                <input type="text"  placeholder="nombre revista" required >
+            
+            <select  required >
+                <option value="" >categoria</option>
+                <option value="" >a</option>
+            </select>
+            <input type="number" required placeholder="costo de revista"  >
+            
+            </div>   
+                <div id="datos">
+                <input type="submit" value="Crear">
+                
+            </div>
+        </form>
+         </div> 
+        
+    </body>
+</html>

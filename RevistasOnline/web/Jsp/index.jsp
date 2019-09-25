@@ -35,8 +35,13 @@
         <% 
         iniciarConeccion a=new iniciarConeccion();
         a.IniciarConeccion();
+        if(iniciarConeccion.coneccion!=null){
+        out.print("  Nadie lee anuncios. La gente lee lo que le <br>interesa, y a veces eso es un anuncio.");
+                      
+        }else{}
         
-
+        
+        
         %>
         
                   
@@ -54,8 +59,15 @@
                     
        HttpSession sesion=request.getSession();
        sesion.setAttribute("usuario",iniciarSesion.user);
-       sesion.setAttribute("usuario",iniciarSesion.pass);
+       sesion.setAttribute("tipo",iniciarSesion.tip);
+       if(iniciarSesion.tip.equals("Usuario")){
        response.sendRedirect("magazine.jsp");
+       
+       }else{
+       response.sendRedirect("revistasEditor.jsp");
+       
+       }
+       
             }}
                     %>
                   

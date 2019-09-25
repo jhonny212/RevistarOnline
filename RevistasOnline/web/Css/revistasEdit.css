@@ -1,0 +1,88 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(110, 117, 219);
+}
+input{
+    width: 100px;
+}
+
+form{
+    background: rgb(28, 28, 71);
+    width: 40%;
+    height: 550px;
+    margin: auto;
+    padding: 10px 10px;
+   
+}
+#datos input{
+    border: 0;
+    background: none;
+    display: block;
+    color: white;
+    margin: 20px auto;
+    padding: 14px 10px;
+    text-align: center;
+    border: 2px solid #3742fa;
+    width: 200px;
+    outline: none;
+    border-radius: 24px;
+    transition: 0.3s;
+}
+
+#categoria input{
+    border: 0;
+    background: none;
+    display: block;
+    color: white;
+    margin: 20px auto;
+    padding: 14px 10px;
+    text-align: center;
+    border: 2px solid #3742fa;
+    width: 200px;
+    outline: none;
+    border-radius: 24px;
+    transition: 0.3s;
+    
+}
+#datos select{
+    border: 0;
+    background: white;
+    display: block;
+    color: rgb(15, 14, 14);
+    margin: 20px auto;
+    padding: 14px 10px;
+    text-align: center;
+    border: 2px solid #3742fa;
+    width: 200px;
+    outline: none;
+    border-radius: 24px;
+    transition: 0.3s;
+}
+#archivos{
+    height: 35px;
+   color: white;
+ 
+    width: 100px;
+    margin: auto;
+}
+
+
+.contenedor{
+   
+  width: 90%;
+  height: 500px;
+ 
+  padding: 40px 10px;
+
+}
+textarea{
+    margin: auto 120px 0;
+    background: none;
+    width: 200px;
+    height: 50px;
+    text-align: justify;
+    color: white;
+    border-radius: 20px;
+    border: 2px solid #3742fa;
+}
