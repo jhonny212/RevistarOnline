@@ -1,0 +1,176 @@
+body,html{
+    height: 100%;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background: rgb(167, 165, 165);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+}
+.perfil{
+    width: 90%;
+    height: 1000px;
+    border: solid;
+    margin: auto;
+    padding: 14px 10px;
+   
+}
+
+table{
+    margin: auto;
+    width: 95%;
+   height: 95%; 
+    padding: 10px 10px;
+    
+}
+
+th{
+ 
+    width: 33%;
+    
+}
+
+#perfil-user{
+
+    
+    height: 90%;
+    width: 90%;
+    margin: auto;
+    align-items: center;
+    align-content: center;
+   position: relative;
+   border-radius: 20px;
+}
+
+img{
+    margin: auto;
+    padding: 10px 10px;
+    width: 100px;
+    height: 70px;
+}
+p{
+    text-align: center;
+    width: 80%;
+    
+    border: dotted;
+    margin: auto;
+    padding: 2px 2px;
+}
+button{
+    margin: auto;
+    padding: 2% 2%;
+    border-radius: 20px;
+    color: white;
+    background: rgb(13, 18, 31);
+  
+}
+article{
+    display: inline-flex;
+    color: white;
+    margin: 2%;
+  
+}
+article>input{
+ 
+    padding: 10px 10px;
+    height: 8px;
+    width: 100px;
+    background: rgb(204, 204, 204);
+    margin: auto;
+}
+h3{
+    padding: 0 10px;
+    color: rgb(204, 204, 204);
+}
+#nombre-localidad{
+    background-color: rgb(90, 88, 88);
+    margin-bottom: 30px;
+  
+    height: 80%;
+    border-radius: 25px;
+}
+#biografia-profile{
+    background-color: rgb(90, 88, 88);
+    width: 90%;
+    height: 70%;
+    align-items: center;
+    margin: 25px 25px;
+    border-radius: 20px;
+
+
+}
+#biografia-profile>textarea {
+    margin-top: 3px;
+   
+    height: 100px;
+    width: 90%;
+}
+#hobbies>div>textarea{
+    margin-top: 3px;
+   
+    height: 100px;
+    width: 90%;
+    border-radius: 20px;
+    margin: 10px 0;
+}
+#hobbies>div{
+    background-color: rgb(90, 88, 88);
+    margin: 0 10px;
+    border-radius: 20px;
+}
+
+#informacion-usuario{
+    background-color: rgb(90, 88, 88);
+    height: 90%;
+    width: 90%;
+    margin: auto;
+    border-style: double;
+    border-radius: 20px;
+ 
+}
+#informacion-usuario>div{
+    display: inline-flex;
+    align-items: center;
+    margin: 10px 5px;
+    padding: 10px 0px;
+
+}
+#informacion-usuario>div>input{
+    background-color: rgb(136, 130, 130);
+   padding: 0 10px;
+   border-style: dotted;
+   width: 100px;
+   height: 25px;
+   margin: auto; 
+}
+
+
+/*
+#informacion-usuario{
+    align-items: center;
+    display: inline;
+
+}
+#informacion-usuario>section{
+    border: solid;
+  margin: 8px 4px;
+  width: 90%;
+  display: inline-block;
+  height: 40px;
+  align-items: center;
+ 
+}
+section>input,section>h3{
+display: inline;
+align-items: center;
+}
+section>h3{
+border: solid;
+padding: 10px 10px;
+}*/
+

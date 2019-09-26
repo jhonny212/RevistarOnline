@@ -1,0 +1,6 @@
+classes/iniciarConeccion.class
+classes/usuario.class
+servlets/iniciarSesion.class
+servlets/crearUsuario.class
+servlets/claseRevista.class
+classes/categoria.class
