@@ -13,52 +13,36 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         <link rel="stylesheet" href="../Css/Style8.css">
-         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-
+         
        
         <title>Revista</title>
         
-    <script>
-    function My_onLoad(){
-       
-        var alto= $(".sidebar").height();
-             console.log(alto);
-           
-             if(alto>637){
-                $(".contenido").height(alto);
-             }else{
-                $(".contenido").height(637);
-                console.log("sa");
-                $(".sidebar").height(637);
-                 
-             }
-
-             
-    }
-    </script>
+  
     </head>
 
-    <body onload="My_onLoad()">
-        <div class="sidebar">
+    <body >
+    
+        <%@include file="../Html/ArchivoRevista.html" %>
+         
+          <div class="sidebar">
             <h2>MENU</h2>
             <ul>
                 <li><a href="">Cerrar sesion</a></li>
                 <li><a href="../Jsp/perfil-usuario.jsp">Perfil</a></li>
                 <%
                     LinkedList <String> tmp=categoria.llenarCategoria();
-                    tmp.add("as");
-                    tmp.add("as");
+                   
                 char a='"';    
                 String cadena=Character.toString(a);
                 for(int i=0; i<tmp.size(); i++){
-                out.print("<li><a href="+cadena+"revistas.jsp?name="+tmp.get(i)+cadena +">"+tmp.get(i)+"</a></li>");
+                out.print("<li><a href="+cadena+"magazine.jsp?name="+tmp.get(i)+cadena +">"+tmp.get(i)+"</a></li>");
                 }
                 %>
                 
 
             </ul>
         </div>
+        
         <div class="contenido">
             <img src="../Imagenes/img-perfil.jpg" alt="" class="menu-bar"> 
             <div id="slider">

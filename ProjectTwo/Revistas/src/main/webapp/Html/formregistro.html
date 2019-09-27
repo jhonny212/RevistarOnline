@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../Css/menu-bar-estilo.css">
     <link rel="stylesheet" href="../Css/formregistro.css">
     <title>Document</title>
 </head>
 <body>
+ 
         <form class="formbox" action="/Revistas/CrearUser " method="POST">
                 <h1 id="titulo">REGISTRAR</h1>
                 <input type ="text" id="nombre" name="nombre" placeholder=" nombre completo" required /> 
@@ -20,13 +22,14 @@
                 <input type ="date" id="fecha" name="fecha" required/> 
                 
                 <input type ="password" id="contraseña" name="password" placeholder=" contraseña " required/>
-               
+               <select name="tipoUsuario">
+                 <option >Usuario</option>
+                 <option>Editor</option>
+               </select>
                 
                 <button type="submit" name="btn" >Registrar</button>
               
                
               </form>   
-              
-              /RevistasOnline/CrearUser 
 </body>
 </html>

@@ -4,3 +4,4 @@ servlets/iniciarSesion.class
 servlets/crearUsuario.class
 servlets/claseRevista.class
 classes/categoria.class
+servlets/pdf.class

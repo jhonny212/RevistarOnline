@@ -64,13 +64,14 @@
        response.sendRedirect("magazine.jsp");
        
        }else{
-       response.sendRedirect("revistasEditor.jsp");
-       
+      out.print("dasds");
+     
+      
        }
-       
+      
             }}
                     %>
-                  
+               
                 </article>
                 
                 <article id="quote">

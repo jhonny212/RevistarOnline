@@ -138,7 +138,7 @@ public class usuario {
         try {
             
             PreparedStatement crearUser=null; 
-            if(user.getTipoUser().equals("usuario")){
+            if(user.getTipoUser().equals("Usuario")){
             
             crearUser=iniciarConeccion.coneccion.prepareStatement("INSERT INTO usuario (nombre,user, edad,direccion, "
                     + "nacimiento, password) VALUES (?,?,?,?,?,?)");

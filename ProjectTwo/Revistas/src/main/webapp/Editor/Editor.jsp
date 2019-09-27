@@ -49,7 +49,7 @@ if (document.form.elements[e-1].checked==false){document.form.elements[e].disabl
             </div>
             
             <div id="datos"> 
-                <input type="text" accept="application/pdf" name="nombre" placeholder="nombre revista" required >
+                <input type="text"  name="nombre" placeholder="nombre revista" required >
             <select name="categorias" >
                 <%
                          if(iniciarConeccion.coneccion==null){

@@ -14,6 +14,17 @@
     </head>
     <body>
         
+           <header>
+        <nav class="navegacion">
+                <ul class="menu">
+                    <li><a href="#">Cerrar sesion</a></li>
+                    <li><a href="#">Revistas</a></li>
+                    <li><a href="#">perfil</a></li>
+                    <li><a href="../Jsp/index.jsp">Inicio</a></li>
+                                                
+                </ul>
+            </nav>  
+</header>
         
         
         <div >

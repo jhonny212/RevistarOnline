@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="../Css/estilorevista.css">
+       
+        <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+       
+        <title>Revista</title>
+        
+    <script>
+    function My_onLoad(){
+       
+        var alto= $(".sidebar").height();
+             console.log(alto);
+           
+             if(alto>637){
+                $(".contenido").height(alto);
+             }else{
+                $(".contenido").height(637);
+                console.log("sa");
+                $(".sidebar").height(637);
+                 
+             }
+
+             
+    }
+    </script>
+    </head>
+
+    <body onload="My_onLoad()">
+     
+     
+            
+            
+        </div>
+
+      
+   
+      
+       
+              <script src=" ../Js/abrir.js"></script>
+        </body>
+</html>
