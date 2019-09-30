@@ -36,9 +36,9 @@
         iniciarConeccion a=new iniciarConeccion();
         a.IniciarConeccion();
         if(iniciarConeccion.coneccion!=null){
-        out.print("  Nadie lee anuncios. La gente lee lo que le <br>interesa, y a veces eso es un anuncio.");
-                      
-        }else{}
+                     
+        }else{
+        }
         
         
         
@@ -64,8 +64,8 @@
        response.sendRedirect("magazine.jsp");
        
        }else{
-      out.print("dasds");
      
+       response.sendRedirect("Editor/Editor.jsp");
       
        }
       

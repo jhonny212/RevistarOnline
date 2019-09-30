@@ -4,6 +4,10 @@
     Author     : jhonny
 --%>
 
+<%@page import="java.sql.SQLException"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="classes.iniciarConeccion"%>
 <%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="classes.categoria"  %>
@@ -11,25 +15,33 @@
 <!DOCTYPE html>
 
 <html>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-         
+          
        
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js" ></script>
         <title>Revista</title>
-        
-  
+     
     </head>
 
     <body >
     
         <%@include file="../Html/ArchivoRevista.html" %>
-         
+        <%HttpSession Sesions=request.getSession();
+        %>
           <div class="sidebar">
             <h2>MENU</h2>
             <ul>
                 <li><a href="">Cerrar sesion</a></li>
                 <li><a href="../Jsp/perfil-usuario.jsp">Perfil</a></li>
+                <li><a href="magazine.jsp?name=suscripciones">Suscripciones</a></li>
+                <li><a href="Magazine.jsp?name=pago">Pagos</a></li>
+                
+              
                 <%
+                // <link rel="stylesheet" href="../Css/estilorevista.css">
+       
                     LinkedList <String> tmp=categoria.llenarCategoria();
                    
                 char a='"';    
@@ -44,31 +56,132 @@
         </div>
         
         <div class="contenido">
+       
             <img src="../Imagenes/img-perfil.jpg" alt="" class="menu-bar"> 
-            <div id="slider">
-                <a href="#" class="control_next">></a>
-                <a href="#" class="control_prev"> < </a>
-                <ul>
-                  <li>
-                      <img src="../Imagenes/img-perfil.jpg" style="height: 90%; width:90%;"  alt="">
-                  </li>
-
-                  <li>
-                    <img src="../Imagenes/revista2.jpg" style="height: 90%; width:90%;"  alt="">
-                </li>
-
-                  <li style="background: #aaa;" ></li>
-                  <li style="background: #aaa;">SLIDE 4</li>
-                </ul>  
-              </div>
+      
+            <div class="KindRevistas" >
               
-              <div class="slider_option">
-                <input type="checkbox" id="checkbox">
-                <label for="checkbox">Autoplay Slider</label>
-              </div> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th id="nombre">Nombre</th>
+                            <th id="descripcion">descripcion</th>
+                            <th id="pdf"> Pdf</th>
+                            
+                            </tr>
+                    </thead>
+
+                    <tbody>
+               
+                        
+                        <%if(request.getParameter("name")!=null ){
+                            
+                            
+                        if(iniciarConeccion.coneccion==null){
+                        iniciarConeccion.IniciarConeccion();
+                        }
+                      
+    try {
+        PreparedStatement read=null;
+        String sql=null;
+        ResultSet sesion=null;
+         char as='"';    
+             String arg=Sesions.getAttribute("usuario").toString();
+          String cadenas=Character.toString(as);
+           if( !request.getParameter("name").equals("suscripciones")) {
+           sql="select * FROM revista a join suscripcion b on (a.idrevista != b.idrevista) WHERE b.user=?";
+            read=iniciarConeccion.coneccion.prepareStatement(sql);
+           
+          read.setString(1, arg);
+            sesion=read.executeQuery();
+         
+          
+          
+           while(sesion.next()){
+               if(request.getParameter("name").equals(sesion.getString("idcategoria"))){
+             
               
+            out.print("<tr>"
+                    + "<td style="+cadenas+"font-size: 20px; text-align: center;"+cadenas+
+                    "> "
+                    + sesion.getString("nombre")
+                    + "</td>"
+                    + "<td>"
+                    + sesion.getString("descripcion")
+                    + "</td>"
+                    + "<td>"
+                    + "<a href="+cadenas+"suscribir.jsp?id="+sesion.getInt("idrevista")+cadenas+""
+                            + "target="+cadenas+"_blank"+cadenas
+                            + ""
+                                    + "><img  src="+cadenas+"../Imagenes/mpdf.png"+cadenas+" style="+cadenas+"width: 50px; height:50px;"+cadenas+
+                    "></a>"
+                            + ""
+                            
+                    + "</td>"
+                            + "</tr>");
+                            }
+               }
+    
+           }else{
+            
+           sql="select a.idrevista, a.nombre, a.descripcion FROM revista a join suscripcion b on a.idrevista=b.idrevista"
+                   + " where b.estado='activo' && b.user=?";
+             read=iniciarConeccion.coneccion.prepareStatement(sql);
+          read.setString(1, arg);
+          
+           
+          sesion=read.executeQuery();
+         
+       
+              while(sesion.next()){
+             
+               
+            out.print("<tr>"
+                    + "<td style="+cadenas+"font-size: 20px; text-align: center;"+cadenas+
+                    "> "
+                    + sesion.getString("nombre")
+                    + "</td>"
+                    + "<td>"
+                    + sesion.getString("descripcion")
+                    + "</td>"
+                    + "<td>"
+                    + "<a href="+cadenas+"/Revistas/pdf?id="+sesion.getInt("idrevista")+cadenas+""
+                            + "target="+cadenas+"_blank"+cadenas
+                            + ""
+                                    + "><img  src="+cadenas+"../Imagenes/mpdf.png"+cadenas+" style="+cadenas+"width: 50px; height:50px;"+cadenas+
+                    "></a>"
+                            
+                    + "</td>"
+                            + "</tr>");
+           }
+     
+           }
+         
+            } catch (SQLException ex) {
+                out.print(ex.getMessage());
+            }
+                            }
+                            
+                        
+                        
+                        
+                        %>
+       
+                      
+                        
+                    </tbody>
+
+
+
+
+
+                </table>
+                
+            </div>
+     
+
         </div>
-   
+ 
       
        
               <script src="../Js/abrir.js"></script>

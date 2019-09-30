@@ -5,7 +5,6 @@
  */
 package servlets;
 
-import classes.iniciarConeccion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,20 +12,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import classes.usuario;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 
 /**
  *
  * @author jhonny
  */
-@WebServlet(name = "iniciarSesion", urlPatterns = {"/iniciarSesion"})
-public class iniciarSesion extends HttpServlet {
-public static String user;
-public static String pass;
-public static String tip;
+@WebServlet(name = "NewServlet", urlPatterns = {"/NewServlet"})
+public class NewServlet extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,17 +31,16 @@ public static String tip;
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet iniciarSesion</title>");            
+            out.println("<title>Servlet NewServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet iniciarSesion at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet NewServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -65,9 +57,6 @@ public static String tip;
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            
-            
-            
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -82,49 +71,8 @@ public static String tip;
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    {
-      usuario.iniciarSesion(request.getParameter("usuario"),request.getParameter("password"), request.getParameter("joder"));
-      
-        
-       
-               
-          
-                if(usuario.message.equals("correcto")){
-                 try {
-                     // RequestDispatcher dispatcher = request.getRequestDispatcher("Jsp/registrar.jsp");
-                     user=null;
-                     user=request.getParameter("usuario");
-                     pass=null;
-                     pass=request.getParameter("password");
-                     tip=request.getParameter("joder");
-                     if(request.getParameter("joder").equals("Usuario")){
-                     response.sendRedirect("Jsp/index.jsp");
-                 
-                     }
-                     else{
-                     response.sendRedirect("Editor/Editor.jsp");
-                 }
-                     //request.setAttribute("error", true);
-                     //dispatcher.forward(request, response);
-                 } catch (IOException ex) {
-                 }
-                      
-               
-        }else {
-        
-            try {
-                     // RequestDispatcher dispatcher = request.getRequestDispatcher("Jsp/registrar.jsp");
-                     
-                     
-                     response.sendRedirect("Jsp/index.jsp");
-                     //request.setAttribute("error", true);
-                     //dispatcher.forward(request, response);
-                 } catch (IOException ex) {
-                 }
-        }
-      
-        
-                    
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
     /**

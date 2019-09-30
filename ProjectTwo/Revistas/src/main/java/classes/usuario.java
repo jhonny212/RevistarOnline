@@ -7,6 +7,7 @@ package classes;
 
 
 
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -35,6 +36,48 @@ public class usuario {
     private String contraseña;
     private String tipoUser;
     
+    
+     private String sobreti;
+   
+ 
+    private String correo;
+    private int telefono;
+    private InputStream input;
+    private String hobbies;
+    private String temainteres;
+    private String descripcion;
+
+    public String getSobreti() {
+        return sobreti;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public InputStream getInput() {
+        return input;
+    }
+
+    public String getHobbies() {
+        return hobbies;
+    }
+
+    public String getTemainteres() {
+        return temainteres;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+    
+    
+    
+    
     public usuario(HttpServletRequest request)
     {
     this.nombre=request.getParameter("nombre");
@@ -48,6 +91,19 @@ public class usuario {
     
     }
 
+   /* public usuario(InputStream perfil, String nombre, String direccion, String sobreti, 
+            String correo, int telefono, String hobbies, String temainteres){
+        this.input=perfil;
+        this.nombre=nombre;
+        this.descripcion=direccion;
+        this.sobreti=sobreti;
+        this.correo=correo;
+        this.telefono=telefono;
+        this.hobbies=hobbies;
+        this.temainteres=temainteres;
+    }
+    */
+    
     public String getTipoUser() {
         return tipoUser;
     }
@@ -59,13 +115,24 @@ public class usuario {
         try {
            String sql=null;
            if(kind.equals("Usuario")){
-            sql="UPDATE usuario (SET nombre=?, edad=?, direccion=?, hobbies=?, temaInteres=?"
-                    + "descripcion=?, estatura=?, aboutYou=?, nacimiento=?)"
+            sql="UPDATE usuario (SET nombre=?, direccion=?, hobbies=?, temaInteres=?"
+                    + "aboutYou=?, correo=?, telefono=?  )"
                     + "WHERE user=?";
         }else{
            sql="SELECT editor.username, editor.password FROM editor WHERE username=? && password=?";
            }
            PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
+           iniciarSesion.setString(1, request.getParameter("nombre"));
+           iniciarSesion.setString(2, request.getParameter("direccion"));
+           iniciarSesion.setString(5, request.getParameter("descripcion"));
+           iniciarSesion.setString(6, request.getParameter("correo"));
+           iniciarSesion.setInt(7, Integer.parseInt(request.getParameter("telefono")));
+           iniciarSesion.setString(3, request.getParameter("hobbies"));
+           iniciarSesion.setString(4, request.getParameter("temaInteres"));
+           
+           
+           
+           
            
            
            iniciarSesion.executeUpdate();
@@ -132,6 +199,66 @@ public class usuario {
         
         
     }
+
+    public static void setMessage(String message) {
+        usuario.message = message;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setEdad(String edad) {
+        this.edad = edad;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public void setTipoUser(String tipoUser) {
+        this.tipoUser = tipoUser;
+    }
+
+    public void setSobreti(String sobreti) {
+        this.sobreti = sobreti;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setInput(InputStream input) {
+        this.input = input;
+    }
+
+    public void setHobbies(String hobbies) {
+        this.hobbies = hobbies;
+    }
+
+    public void setTemainteres(String temainteres) {
+        this.temainteres = temainteres;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
     
     public void registrarUsuario(usuario user){
    
@@ -183,6 +310,68 @@ public class usuario {
         }
     }
 
+    public usuario(){}
+    
+   public static usuario perfil(){
+   usuario tmp=new usuario();
+   tmp.setSobreti("");
    
+   if(iniciarConeccion.coneccion==null){
+            iniciarConeccion.IniciarConeccion();
+            }
+        try {
+           String sql=null;
+           sql="SELECT * FROM usuario WHERE user=?   " ;
+           
+           PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
+           iniciarSesion.setString(1, "user111");
+      ResultSet sesion=iniciarSesion.executeQuery();
+        
+           while(sesion.next()){
+          tmp.setNombre(sesion.getString("nombre"));
+          tmp.setDireccion(sesion.getString("direccion"));
+          if(sesion.getString("aboutYou")!=null){
+          tmp.setSobreti(sesion.getString("aboutYou"));
+          
+          }
+          if(sesion.getString("correo")!=null){
+          tmp.setCorreo(sesion.getString("correo"));
+          
+          }else{
+          tmp.setCorreo("");
+          }
+          tmp.setTelefono(sesion.getInt("telefono"));
+      
+      
+          
+      if(sesion.getString("hobbies")!=null){
+          tmp.setHobbies(sesion.getString("hobbies"));
+      
+      }else{
+      tmp.setHobbies("");}
+      if(sesion.getString("temaInteres")!=null){
+          tmp.setTemainteres(sesion.getString("temaInteres"));
+      
+      }else{
+      tmp.setTemainteres("");}
+           }
+              
+            } catch (SQLException ex) {
+             
+            
+            }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   return tmp;
+   }
 
 }

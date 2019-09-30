@@ -8,17 +8,21 @@
     <title>Document</title>
 </head>
 <body>
+  
+  
     <div class="perfil">
         <table>
-            <form method="GET" action="">
+       
             <tr>
                 <th>
                     <div id="perfil-user">
-                            <img src="../Imagenes/img-perfil.jpg" alt="">
+                       
+                        <img src="/Revistas/imagen?user=user111 " height="100px" width="150px">
+                    
                             <br>
                             <p>Para cambiar tu foto carga una imagen</p>
                             <br>
-                            <input type="file"> 
+                            <input type="file" name="archivo" required> 
                     </div>
                 </th>
                 <th>
@@ -27,13 +31,20 @@
                             <section>
                                    <article>
                                         <h3>Nombre </h3> 
-                                    <input  name ="nombre"type="text">
+                                        
+                                        <input required  name ="nombre" type="text" <%out.print("value="+cadena+
+                                                tmp.getNombre()+cadena);
+                                                %>  >
                             
                                    </article>
                                     <article>
 
                                     <h3>Direccion</h3> 
-                                    <input name ="direccion" type="text">
+                                    
+                                    <input required name ="direccion" type="text" <%out.print("value="+cadena+
+                                                tmp.getDireccion()+cadena);
+                                                %> >
+                                    
                                     </article>
                             </section>
 
@@ -47,23 +58,33 @@
                         
                             <div id="biografia-profile">
                                     <h3>Sobre ti:</h3> 
-                                   <textarea name="descripcion" cols=40 rows=10></textarea>  </div>
+                                   <textarea required name="descripcion" cols=40 rows=10
+                                            
+                                             >
+                                                 <%out.print(
+                                                tmp.getSobreti());
+                                                %> 
+                                   </textarea>  </div>
                                          
                      </th>
                      <th>
                          <div id="informacion-usuario">
                              <div >
                                  <h3>Correo</h3>
-                            <input type="email" name="correo" id="correo">
+                            <input type="email" required name="correo" id="correo" <%out.print("value="+cadena+
+                                                tmp.getCorreo()+cadena);
+                                                %>>
                             </div>
                              <div >
                                  <h3>Telefono</h3>
-                                 <input type="number" name="telefono" id="telefono">
+                                 <input type="number" required name="telefono" id="telefono" <%
+                                        if(tmp.getTelefono()!=0){
+                                        out.print("value="+cadena+
+                                                tmp.getTelefono()+cadena);
+                                                }
+                                                %>>
                              </div>
-                             <div>
-                                 <h3>Still no</h3>
-                                 <input type="text" name="still no" id="d" >
-                             </div>
+                         
                             </div>
                      </th>
             </tr>
@@ -73,21 +94,40 @@
                    
                             <div id="pasatiempo">
                                     <h3>Hobbies</h3> 
-                                   <textarea name="hobbies" cols=40 rows=10></textarea>  </div>
+                                    <textarea required name="hobbies" cols=40 rows=10>
+                                                <%out.print(
+                                                tmp.getHobbies());
+                                                %>                                     
+
+                                    </textarea> 
+                            
+                            </div>
                                          
                      </th>
                      <th  id="hobbies">
                    
                             <div id="pasatiempo">
                                     <h3>Temas de interes</h3> 
-                                   <textarea name="temaInteres" cols=40 rows=10></textarea> </div>
+                                    <textarea name="temaInteres" rows="10" cols="50" required>
+                                            <%
+                                        if(tmp.getTemainteres().equals(""))
+                            {                                            out.print(
+                                                tmp.getTemainteres());
+                              }                  %> 
+
+
+                                   
+                                    
+                                    </textarea>
+                            </div>
                                          
                      </th>
             <input type="submit" style="width: 200px" value="Actualizar">
             </tr>
             
-        </form>
+       
         </table>
     </div>
+   
 </body>
 </html>

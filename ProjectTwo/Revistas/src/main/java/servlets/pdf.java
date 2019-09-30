@@ -9,6 +9,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import classes.iniciarConeccion;
+import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.servlet.ServletException;
@@ -36,6 +37,8 @@ public class pdf extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
   response.setContentType("application/pdf");
+  
+
    PreparedStatement ps = null;
         ResultSet rs = null;
         byte[] b = null;

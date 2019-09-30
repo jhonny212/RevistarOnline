@@ -115,7 +115,9 @@
                     + "<td>"
                     + "<a href="+cadenas+"/Revistas/pdf?id="+sesion.getInt("idrevista")+cadenas+""
                             + "target="+cadenas+"_blank"+cadenas
-                            + "> pdf</a>"
+                            + "> <img  src="+cadenas+"../Imagenes/mpdf.png"+cadenas+" style="+cadenas+"width: 50px; height:50px;"+cadenas+
+                    "></a>"
+                            + ""
                             
                     + "</td>"
                             + "</tr>");
@@ -128,12 +130,7 @@
                         
                         
                         %>
-                        
-                        <a href="pdf?id=<%=2%>" target="_blank"><img src="Imagen/mpdf.png" title="pdf"/></a>
- 
-                    </tbody>
-
-
+          </tbody>
 
 
 
