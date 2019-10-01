@@ -12,6 +12,8 @@
 <%@page import="classes.iniciarConeccion"%>
 <%@page import="classes.categoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page  session="true" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,7 +50,8 @@
             <h2>MENU</h2>
             <ul>
                 <li><a href="">Cerrar sesion</a></li>
-                <li><a href="../Jsp/perfil-usuario.jsp">Perfil</a></li>
+                <li><a href="perfil-editor.jsp" target="blank" >Perfil</a></li>
+                <li><a href="Editor.jsp">Crear revista</a> </li>
                 <%
                     LinkedList <String> tmp=categoria.llenarCategoria();
                    
@@ -80,6 +83,8 @@
 
                     <tbody>
                
+                          <%HttpSession Sesions=request.getSession();
+        %>
                         
                         <%if(request.getParameter("name")!=null){
                             
@@ -95,7 +100,7 @@
            PreparedStatement read=iniciarConeccion.coneccion.prepareStatement(sql);
            
           read.setString(1, request.getParameter("name"));
-          read.setString(2, "user111");
+          read.setString(2, Sesions.getAttribute("usuario").toString());
           ResultSet sesion=read.executeQuery();
           char as='"';    
           String cadenas=Character.toString(as);

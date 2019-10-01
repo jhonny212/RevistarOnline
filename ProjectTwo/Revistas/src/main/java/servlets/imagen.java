@@ -64,10 +64,10 @@ import javax.servlet.http.Part;
         
         processRequest(request, response);
         
-      
-        
-        
-           String sql = "SELECT * FROM usuario where user=?";  
+         if(iniciarConeccion.coneccion==null){
+            iniciarConeccion.IniciarConeccion();
+            }
+        String sql = "SELECT * FROM usuario where user=?";  
          PreparedStatement ps2 = null;
          ResultSet tmp=null;
           InputStream input=null;
@@ -96,11 +96,8 @@ import javax.servlet.http.Part;
            }
            
         } catch (SQLException ex) {
-            response.sendRedirect("index.jsp");
-            
+    
         } catch (Exception ex) {
-                 response.sendRedirect("index.jsp");
-        
             
         }
        /*  if(iniciarConeccion.coneccion==null){

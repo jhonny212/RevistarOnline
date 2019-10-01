@@ -8,6 +8,7 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="classes.iniciarConeccion"%>
+<%@page  session="true" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,6 +20,9 @@
         <title>JSP Page</title>
     </head>
     <body>
+             <%HttpSession Sesions=request.getSession();
+                      out.print(Sesions.getAttribute("usuario")+"hola");
+        %>
         <script type="text/javascript">
 function check(e)
 {
@@ -29,9 +33,9 @@ if (document.form.elements[e-1].checked==false){document.form.elements[e].disabl
          <nav class="navegacion">
                 <ul class="menu">
                     <li><a href="#">Cerrar sesion</a></li>
-                    <li><a href="revistas-Editor.jsp">Revistas</a></li>
-                    <li><a href="#">perfil</a></li>
-                    <li><a href="revistasEditor.jsp">crearRevista</a></li>
+                    <li><a href="revistas-Editor.jsp" >Revistas</a></li>
+                    <li><a href="perfil-editor.jsp" target="blank">perfil</a></li>
+                    <li><a href="Editor.jsp">crearRevista</a></li>
                                                 
                 </ul>
             </nav>  
@@ -78,7 +82,7 @@ if (document.form.elements[e-1].checked==false){document.form.elements[e].disabl
             </select >
 
             <input type="number" name="costo" placeholder="costo de revista"  >
-            
+               <input type="date" name="fecha" required>
             </div> 
            
             

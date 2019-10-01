@@ -33,7 +33,7 @@ opacity: 0.9;
   height: 60%;
 
  margin: auto;
-border: solid;
+
   position: relative;
 
 padding: 25px;
@@ -58,7 +58,6 @@ section{
  text-align: justify;
  padding-top: 20px;
  
-border: solid;
 }
 
 

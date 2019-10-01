@@ -97,12 +97,14 @@ public static String tip;
                      pass=null;
                      pass=request.getParameter("password");
                      tip=request.getParameter("joder");
+                     
+                     
                      if(request.getParameter("joder").equals("Usuario")){
                      response.sendRedirect("Jsp/index.jsp");
                  
                      }
                      else{
-                     response.sendRedirect("Editor/Editor.jsp");
+                     response.sendRedirect("Jsp/index.jsp");
                  }
                      //request.setAttribute("error", true);
                      //dispatcher.forward(request, response);

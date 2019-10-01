@@ -16,7 +16,8 @@
     </head>
     <body>
        
-                    
+                    <%HttpSession Sesions=request.getSession();
+        %>
          <header>
                       
             <nav class="navegacion">
@@ -28,10 +29,11 @@
                     </ul>
                 </nav>  
     </header>
+      
           
                  <% 
                      usuario tmp =new usuario();
-                     tmp=usuario.perfil();
+                     tmp=usuario.perfil(Sesions.getAttribute("usuario").toString());
                      
 
                 char a='"';    

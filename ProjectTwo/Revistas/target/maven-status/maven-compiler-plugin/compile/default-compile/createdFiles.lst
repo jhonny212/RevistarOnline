@@ -1,7 +1,7 @@
-classes/iniciarConeccion.class
-classes/usuario.class
 servlets/iniciarSesion.class
 servlets/crearUsuario.class
-servlets/claseRevista.class
 classes/categoria.class
+classes/iniciarConeccion.class
+classes/usuario.class
+servlets/claseRevista.class
 servlets/pdf.class

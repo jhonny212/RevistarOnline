@@ -36,7 +36,7 @@
                 <li><a href="">Cerrar sesion</a></li>
                 <li><a href="../Jsp/perfil-usuario.jsp">Perfil</a></li>
                 <li><a href="magazine.jsp?name=suscripciones">Suscripciones</a></li>
-                <li><a href="Magazine.jsp?name=pago">Pagos</a></li>
+                <li><a href="#">Pagos</a></li>
                 
               
                 <%

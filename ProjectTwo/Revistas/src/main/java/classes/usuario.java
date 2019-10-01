@@ -91,19 +91,6 @@ public class usuario {
     
     }
 
-   /* public usuario(InputStream perfil, String nombre, String direccion, String sobreti, 
-            String correo, int telefono, String hobbies, String temainteres){
-        this.input=perfil;
-        this.nombre=nombre;
-        this.descripcion=direccion;
-        this.sobreti=sobreti;
-        this.correo=correo;
-        this.telefono=telefono;
-        this.hobbies=hobbies;
-        this.temainteres=temainteres;
-    }
-    */
-    
     public String getTipoUser() {
         return tipoUser;
     }
@@ -312,7 +299,7 @@ public class usuario {
 
     public usuario(){}
     
-   public static usuario perfil(){
+   public static usuario perfil(String user){
    usuario tmp=new usuario();
    tmp.setSobreti("");
    
@@ -324,7 +311,7 @@ public class usuario {
            sql="SELECT * FROM usuario WHERE user=?   " ;
            
            PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
-           iniciarSesion.setString(1, "user111");
+           iniciarSesion.setString(1, user);
       ResultSet sesion=iniciarSesion.executeQuery();
         
            while(sesion.next()){
@@ -341,6 +328,130 @@ public class usuario {
           tmp.setCorreo("");
           }
           tmp.setTelefono(sesion.getInt("telefono"));
+      
+      
+          
+      if(sesion.getString("hobbies")!=null){
+          tmp.setHobbies(sesion.getString("hobbies"));
+      
+      }else{
+      tmp.setHobbies("");}
+      if(sesion.getString("temaInteres")!=null){
+          tmp.setTemainteres(sesion.getString("temaInteres"));
+      
+      }else{
+      tmp.setTemainteres("");}
+           }
+              
+            } catch (SQLException ex) {
+             
+            
+            }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   return tmp;
+   }
+   
+     public static usuario user(String user){
+   usuario tmp=new usuario();
+   tmp.setSobreti("");
+   
+   if(iniciarConeccion.coneccion==null){
+            iniciarConeccion.IniciarConeccion();
+            }
+        try {
+           String sql=null;
+           sql="SELECT * FROM editor WHERE username=?   " ;
+           
+           PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
+           iniciarSesion.setString(1, user);
+      ResultSet sesion=iniciarSesion.executeQuery();
+        
+           while(sesion.next()){
+          tmp.setNombre(sesion.getString("nombre"));
+          tmp.setDireccion(sesion.getString("direccion"));
+          if(sesion.getString("descripcion")!=null){
+          tmp.setSobreti(sesion.getString("descripcion"));
+          
+          }
+          if(sesion.getString("sexo")!=null){
+          tmp.setCorreo(sesion.getString("sexo"));
+          
+          }else{
+          tmp.setCorreo("");
+          }
+      
+      
+          
+      if(sesion.getString("hobbies")!=null){
+          tmp.setHobbies(sesion.getString("hobbies"));
+      
+      }else{
+      tmp.setHobbies("");}
+      if(sesion.getString("temaInteres")!=null){
+          tmp.setTemainteres(sesion.getString("temaInteres"));
+      
+      }else{
+      tmp.setTemainteres("");}
+           }
+              
+            } catch (SQLException ex) {
+             
+            
+            }
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   return tmp;
+   }
+     
+       public static usuario userDatos(String user){
+   usuario tmp=new usuario();
+   tmp.setSobreti("");
+   
+   if(iniciarConeccion.coneccion==null){
+            iniciarConeccion.IniciarConeccion();
+            }
+        try {
+           String sql=null;
+           sql="SELECT * FROM editor WHERE username=?   " ;
+           
+           PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
+           iniciarSesion.setString(1, user);
+      ResultSet sesion=iniciarSesion.executeQuery();
+        
+           while(sesion.next()){
+          tmp.setNombre(sesion.getString("nombre"));
+          tmp.setDireccion(sesion.getString("direccion"));
+          if(sesion.getString("descripcion")!=null){
+          tmp.setSobreti(sesion.getString("descripcion"));
+          
+          }
+          if(sesion.getString("sexo")!=null){
+          tmp.setCorreo(sesion.getString("sexo"));
+          
+          }else{
+          tmp.setCorreo("");
+          }
+          
+          tmp.setFecha(sesion.getString("nacimiento"));
       
       
           

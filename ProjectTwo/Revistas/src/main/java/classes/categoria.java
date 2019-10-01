@@ -60,4 +60,25 @@ public class categoria {
                
             }
  return revistas;}
+ 
+  public static LinkedList llenarCatporRevistas(){
+ LinkedList <revista > revistas=new LinkedList();
+     if(iniciarConeccion.coneccion==null){
+            iniciarConeccion.IniciarConeccion();
+            }
+        try {
+            String sql="select a.nombre, b.username, a.idrevista FROM revista a join editor b on (a.username =b.username)";
+            PreparedStatement categoria =iniciarConeccion.coneccion.prepareStatement(sql);
+           ResultSet sesion=categoria.executeQuery();
+            while(sesion.next()){
+              
+                revista tmp=new revista(sesion.getString("username"),
+                sesion.getString("nombre"), sesion.getInt("idrevista"));
+                revistas.add(tmp);
+            }
+             
+            } catch (SQLException ex) {
+               
+            }
+ return revistas;}
 }

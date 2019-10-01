@@ -1,0 +1,61 @@
+body{
+    margin: 0;
+    padding: 0;
+background: rgb(151, 134, 134);
+}
+.contenedor1{
+    width: 100%;
+  
+    margin: 10px auto;
+    display: inline-flex;
+
+}
+
+#c1{
+background: rgb(122, 122, 122);
+width: 300px;
+height: 200px;
+margin: 0;
+padding: 40px 40px;
+border: 1px solid black;
+
+}
+#c1 img{
+    width: 290px;
+    height: 200px;
+    margin: auto;
+}
+
+#c2{   background: rgb(192, 189, 189);
+    transition: 1.6s;
+    width: 45%;
+    height: 300px;
+    margin: 0;
+    padding: 40px 40px;
+    border: 1px solid black;
+    margin-left: 150px;
+    
+    }
+#c2 input textArea{
+    height: 15px;
+    margin: auto;
+    padding: 10px 0;
+    display: block;
+    background: none;
+    border: 1px solid rgb(41, 41, 66);
+}    
+    
+#c2 label{
+    
+    display: block;
+
+}
+#c2:hover{
+    background: rgba(113, 153, 212, 0.397);
+    transition: 1.6s;
+    cursor: pointer;
+    border-radius: 20px;
+    opacity: 0.5;
+    width: 30%;
+    
+}

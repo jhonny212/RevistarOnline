@@ -60,16 +60,21 @@
        HttpSession sesion=request.getSession();
        sesion.setAttribute("usuario",iniciarSesion.user);
        sesion.setAttribute("tipo",iniciarSesion.tip);
+       
+       
        if(iniciarSesion.tip.equals("Usuario")){
        response.sendRedirect("magazine.jsp");
        
        }else{
      
-       response.sendRedirect("Editor/Editor.jsp");
+       response.sendRedirect("../Editor/Editor.jsp");
       
        }
       
-            }}
+            }
+                        
+                        
+                        }
                     %>
                
                 </article>

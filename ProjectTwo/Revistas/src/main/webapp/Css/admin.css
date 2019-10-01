@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: rgb(121, 111, 111);
+}
+.admincontent{
+    margin: 30px auto;
+width: 25%;
+height: 100px;
+
+}
+.actualizar-datos{
+    display: inline-flex;
+   margin: 10px 5%;
+
+   background: rgb(197, 125, 58);
+   width: 90%;
+}
+.actualizar-datos div{
+
+    display: block;
+    margin: 20px 20px;
+    width: 500px;
+    height: 200px;
+}
+.actualizar-datos div label{
+font-size: 20px;    
+display: block;
+height: 30px;
+margin: 50px auto;
+text-align: center;
+
+}
+.actualizar-datos div input{
+   
+    display: block;
+    height: 30px;
+    background: rgb(197, 194, 194);
+    margin: 50px auto;
+    
+    }
+  .sub input{
+      margin: 0 45%;
+      background: rgb(180, 180, 180);
+      height: 40px;
+  }  
+  .sub{
+      width: 100%;
+  }
+  table{
+    width: 90%;
+    margin: auto;
+  }
+  th{
+      border: 1px  blue;
+      border-radius: 20px;
+      transition: 1s;
+      background: rgb(207, 155, 10);
+      height: 50px;
+  }
+  tbody  tr{
+      height: 50px;
+      text-align: center;
+      transition: 1s;
+      border: 1px solid blue;
+      background: rgb(28, 47, 97);
+      color: white;
+     
+  }
+  td input{
+      background:rgb(145, 143, 138);
+      border-style: dashed;
+      cursor: pointer;
+      height: 30px;
+  }

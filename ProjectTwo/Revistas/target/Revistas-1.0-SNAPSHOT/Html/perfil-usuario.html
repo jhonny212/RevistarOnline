@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-  
+                   
   
     <div class="perfil">
         <table>
@@ -17,7 +17,7 @@
                 <th>
                     <div id="perfil-user">
                        
-                        <img src="/Revistas/imagen?user=user111 " height="100px" width="150px">
+                        <img height="100px" width="150px" src="/Revistas/imagen?user="+<%= Sesions.getAttribute("usuario").toString()%>>
                     
                             <br>
                             <p>Para cambiar tu foto carga una imagen</p>
