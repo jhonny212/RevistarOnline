@@ -70,14 +70,14 @@ public class suscripciones extends HttpServlet {
             int costo=0;
                 try {
             PreparedStatement crearUser=null;
-            String sql="select tarifa FROM revista  WHERE idrevista=?";
+            String sql="select costo FROM revista  WHERE idrevista=?";
             crearUser=iniciarConeccion.coneccion.prepareStatement(sql);
             crearUser.setInt(1, Integer.parseInt(request.getParameter("id")));
             ResultSet tm=crearUser.executeQuery();
            
             while(tm.next()){
             
-            costo=(tm.getInt("tarifa"));
+            costo=(tm.getInt("costo"));
             
             }
             

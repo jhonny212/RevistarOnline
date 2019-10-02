@@ -30,7 +30,8 @@
     <body >
     
         <%@include file="../Html/ArchivoRevista.html" %>
-        <%HttpSession Sesions=request.getSession();
+        <% HttpSession Sesions=request.getSession();
+        revista.actualizarSuscripcion();
         %>
           <div class="sidebar">
             <h2>MENU</h2>
@@ -38,7 +39,7 @@
                 <li><a href="">Cerrar sesion</a></li>
                 <li><a href="../Jsp/perfil-usuario.jsp">Perfil</a></li>
                 <li><a href="magazine.jsp?name=suscripciones">Suscripciones</a></li>
-                <li><a href="#">Pagos</a></li>
+                <li><a href="hacerPago.jsp">Pagos</a></li>
                 
               
                 <%
@@ -159,9 +160,11 @@
                     + "<td>"
                     + "<a href="+cadenas+"/Revistas/pdf?id="+sesion.getInt("idrevista")+cadenas+""
                             + "target="+cadenas+"_blank"+cadenas
-                            + ""
+                            + " "
                                     + "><img  src="+cadenas+"../Imagenes/mpdf.png"+cadenas+" style="+cadenas+"width: 50px; height:50px;"+cadenas+
-                    "></a>"
+                    "></a><a href="+cadenas+"comentario"
+                            + "Megusta.jsp?id="+sesion.getInt("idrevista")+cadenas+" tar"
+                                    + "get="+cadenas+"_blank"+cadenas+" >comentarios </a>"
                             
                     + "</td>"
                             + "</tr>");

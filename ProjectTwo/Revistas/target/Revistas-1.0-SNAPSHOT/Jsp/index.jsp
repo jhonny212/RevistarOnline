@@ -4,6 +4,7 @@
     Author     : jhonny
 --%>
 
+<%@page import="classes.revista"%>
 <%@page import="classes.iniciarConeccion"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -23,6 +24,8 @@
     </head>
     <body>
       
+        
+         
         <header >
             <div class="contenedoruno">
              

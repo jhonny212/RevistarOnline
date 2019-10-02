@@ -20,7 +20,9 @@ import java.util.LinkedList;
 public class revista {
 public static LinkedList deudas(String user){
 LinkedList <revista>tmp=new LinkedList();
-    
+    if(iniciarConeccion.coneccion==null){
+    iniciarConeccion.IniciarConeccion();
+    }
   try {
          
         
@@ -28,16 +30,13 @@ LinkedList <revista>tmp=new LinkedList();
          String sql2=null;
          ResultSet sesion2=null;
          sql2="SELECT * FROM suscripcion WHERE user=?";
-         
-         
-         
          read2=iniciarConeccion.coneccion.prepareStatement(sql2);
          read2.setString(1, user);
          sesion2=read2.executeQuery();
         
          while(sesion2.next()){
          
-         if(sesion2.getString("estado").equals("descativado")){
+         if(sesion2.getString("estado").equals("descativo")){
              revista s=new revista();
              s.setId(sesion2.getInt("idrevista"));
              s.setUser(sesion2.getString("user"));
@@ -146,11 +145,13 @@ String data=annio+"-"+mes+"-"+dia;
          sesion3=read3.executeQuery();
         
             while(sesion3.next()){
+                
              if(sesion3.getLong(1)<0){
                  
-                 actualizarSus(sesion2.getInt("idrevista"), sesion2.getString("user"));
-            
+                
              }else{
+                  actualizarSus(sesion2.getInt("idrevista"), sesion2.getString("user"));
+            
          
              }
          
@@ -173,7 +174,7 @@ String data=annio+"-"+mes+"-"+dia;
                     
         
            PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
-           iniciarSesion.setString(1,"descativado");
+           iniciarSesion.setString(1,"descativo");
          
            iniciarSesion.setInt(2,aInt);
            iniciarSesion.setString(3,string);

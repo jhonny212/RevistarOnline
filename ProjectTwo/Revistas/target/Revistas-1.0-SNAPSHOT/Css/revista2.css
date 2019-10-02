@@ -1,0 +1,35 @@
+.comentario{
+    width: 90%;
+    background: rgb(172, 157, 157);
+    margin: auto;
+}
+.comentario a img{
+border-radius: 50%;
+height: 50px;
+transition: 2s;
+}
+.comentario a :hover{
+
+    border-radius: 50%;
+    height: 100px;
+    transition: 2s;
+    padding: 10px 10px;
+    
+}
+.comentario textarea {
+
+    background: rgb(71, 67, 67);
+    display: block;
+    margin: 10px auto;
+    color: white;
+}
+.comentario input {
+
+   
+    display: block;
+    margin: 10px auto;
+}
+#close{
+    opacity: 0;
+    cursor: none;
+}

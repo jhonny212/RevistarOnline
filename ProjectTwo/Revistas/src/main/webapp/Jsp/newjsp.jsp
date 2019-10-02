@@ -24,6 +24,9 @@
                  if(iniciarConeccion.coneccion==null){
             iniciarConeccion.IniciarConeccion();
             }
+          
+                 
+                 
                  
                  
 Calendar c1 = Calendar.getInstance();
@@ -39,16 +42,18 @@ String data=annio+"-"+mes+"-"+dia;
          PreparedStatement read2=null;
          String sql2=null;
          ResultSet sesion2=null;
-         sql2="SELECT * FROM datos";
+         sql2="SELECT * FROM datos WHERE iddatos=?";
          
          
          
          read2=iniciarConeccion.coneccion.prepareStatement(sql2);
-       
+         read2.setInt(1, 2);
          sesion2=read2.executeQuery();
         
          while(sesion2.next()){
-                      PreparedStatement read3=null;
+        
+         
+          PreparedStatement read3=null;
          String sql3=null;
          ResultSet sesion3=null;
          sql3="SELECT TIMESTAMPDIFF(MONTH, '"+sesion2.getDate("fecha")+"', '"+data+"') AS meses_transcurridos;";
@@ -59,9 +64,10 @@ String data=annio+"-"+mes+"-"+dia;
        
          sesion3=read3.executeQuery();
         
-         while(sesion3.next()){
+         if(sesion3.next()){
+              out.print(sesion3.getLong(1));
              if(sesion3.getLong(1)<0){
-            
+            out.print(sesion3.getLong(1));
              }else{
          
              }
