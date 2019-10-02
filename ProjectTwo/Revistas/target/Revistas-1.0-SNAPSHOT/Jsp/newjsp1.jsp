@@ -19,8 +19,13 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
+        
+        
+        
+        
         <% 
-        if(iniciarConeccion.coneccion==null){
+        /*if(iniciarConeccion.coneccion==null){
             iniciarConeccion.IniciarConeccion();
             }
         
@@ -85,8 +90,12 @@ String data=annio+"-"+mes+"-"+dia;
          out.print(ex.getMessage());
      }
         
-        
+        */
         
         %>
+        <form method="GET" action="newjsp1.jsp" >
+            <input type="date" >
+            <a href="newjsp1.jsp?id=2" > hey</a>
+        </form>
     </body>
 </html>

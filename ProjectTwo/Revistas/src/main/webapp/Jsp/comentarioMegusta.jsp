@@ -16,7 +16,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="../Css/suscribir.css">
-        <link rel="stylesheet" href="../Css/revista2.css">
+        <link rel="stylesheet" href="../Css/coment-like.css">
        
         <title>JSP Page</title>
     </head>
@@ -81,12 +81,15 @@
         
                  <div class="comentario">
                      
-               <%out.print("<a href="+cadena+"/Revistas/comentLike?id="+ids+cadena+">"
-                       + "<img src="+cadena+"../Imagenes/like.jpg"+cadena+"></a>"); %>
-                     <input id="close" type="text" name="id" <%= "value="+cadena+ids+cadena %> >
+                     <form action="/Revistas/comentLike" class="likes" method="GET">
+                          <input type="submit" id="boton" > 
+                          
+                          <input type="date" name="fecha" required >
+               <input id="close" type="text" name="id" <%= "value="+cadena+ids+cadena %> >
                      <br>
+                      </form>
                     <% 
-                        
+                       
                          HttpSession sesion=request.getSession();
                         
                           try {
@@ -117,7 +120,8 @@
                     
                    <form  method="POST" action="/Revistas/comentLike">
                         <textarea required name="comentar" id="" cols="30" rows="10"></textarea>
-                       <input type="submit" value="comentar">
+                       <input type="submit"  value="comentar">
+                       <input type="date" name="fecha" required>
                        <input id="close" type="text" name="id" <%= "value="+cadena+ids+cadena %> >
                    </form>
                  </div>                               

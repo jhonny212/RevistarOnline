@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -53,7 +55,20 @@ public class comentLike extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
          processRequest(request, response);
+                   
+         String startDate=request.getParameter("fecha");
+SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+java.util.Date date = null;
+        try {
+            date = sdf1.parse(startDate);
+        } catch (ParseException ex) {
+       
+        }
+ java.sql.Date sqlStartDate = new java.sql.Date(date.getTime()); 
+        
           PrintWriter s=response.getWriter();
         s.print(request.getParameter("id"));
        try {
@@ -61,10 +76,11 @@ public class comentLike extends HttpServlet {
              HttpSession sesion=request.getSession();
             
             PreparedStatement crearUser=null;
-            crearUser=iniciarConeccion.coneccion.prepareStatement("INSERT INTO Ilike (idrevista, user) values (?,?)");
+            crearUser=iniciarConeccion.coneccion.prepareStatement("INSERT INTO Ilike (idrevista, user, fecha) values (?,?,?)");
 
             crearUser.setInt(1, Integer.parseInt(request.getParameter("id")));
             crearUser.setString(2, sesion.getAttribute("usuario").toString());
+            crearUser.setDate(3, sqlStartDate);
              crearUser.executeUpdate();
         } catch (SQLException ex) {
       s.print(ex.getMessage());
@@ -83,15 +99,29 @@ public class comentLike extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+               
+         String startDate=request.getParameter("fecha");
+SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+java.util.Date date = null;
+        try {
+            date = sdf1.parse(startDate);
+        } catch (ParseException ex) {
+       
+        }
+ java.sql.Date sqlStartDate = new java.sql.Date(date.getTime()); 
+        
+        
           try {
             processRequest(request, response);
              HttpSession sesion=request.getSession();
             
             PreparedStatement crearUser=null;
-            crearUser=iniciarConeccion.coneccion.prepareStatement("INSERT INTO comentario ( comentario, idrevista, user) values (?,?,?)");
+            crearUser=iniciarConeccion.coneccion.prepareStatement("INSERT INTO comentario ( comentario, idrevista, user, fecha) values (?,?,?,?)");
             crearUser.setString(1, request.getParameter("comentar"));
             crearUser.setInt(2, Integer.parseInt(request.getParameter("id")));
             crearUser.setString(3, sesion.getAttribute("usuario").toString());
+            crearUser.setDate(4, sqlStartDate);
              crearUser.executeUpdate();
         } catch (SQLException ex) {
         PrintWriter s=response.getWriter();

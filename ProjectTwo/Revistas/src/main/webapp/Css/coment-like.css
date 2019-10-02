@@ -33,3 +33,17 @@ transition: 2s;
     opacity: 0;
     cursor: none;
 }
+.likes #boton{
+    cursor: pointer;
+    background: url("../Imagenes/like.png");
+
+    height: 60px;
+    width: 80px;
+    border-radius: 50px;
+    color:   rgb(71, 67, 67);
+    
+}
+#close:hover{
+    height: 1px;
+width: 1px;
+}

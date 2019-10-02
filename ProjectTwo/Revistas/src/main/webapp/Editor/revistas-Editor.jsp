@@ -18,7 +18,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="../Css/estilorevista.css">
+        <link rel="stylesheet" href="../Css/revistaEstilo.css">
        
         <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
@@ -58,7 +58,9 @@
                 char a='"';    
                 String cadena=Character.toString(a);
                 for(int i=0; i<tmp.size(); i++){
-                out.print("<li><a href="+cadena+"revistas-Editor.jsp?name="+tmp.get(i)+cadena +">"+tmp.get(i)+"</a></li>");
+                out.print("<li><a href="+cadena+"revistas-Editor.jsp?name="+tmp.get(i)+cadena +">"+tmp.get(i)+"</a></li>"
+                        + "");
+                
                 }
                 %>
                 
