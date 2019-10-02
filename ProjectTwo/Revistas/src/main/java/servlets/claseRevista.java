@@ -142,8 +142,8 @@ import javax.servlet.http.Part;
            
          }
         
-      String sql = "INSERT INTO revista (nombre, username, idcategoria, costo,revistaG, descripcion) VALUES(?,"
-              + " ?, ?,?, ?,? );";  
+      String sql = "INSERT INTO revista (nombre, username, idcategoria, costo,revistaG, descripcion, tarifa) VALUES(?,"
+              + " ?, ?,?, ?,?,? );";  
       PreparedStatement ps2 = null;
         try {
             ps2 = iniciarConeccion.coneccion.prepareStatement(sql);
@@ -153,6 +153,7 @@ import javax.servlet.http.Part;
             ps2.setInt(4, 10);
             ps2.setBlob(5, input);
             ps2.setString(6, descripcion);
+            ps2.setInt(7, 1);
             ps2.executeUpdate();
         } catch (Exception ex) {
             System.out.println(ex.getMessage());

@@ -9,13 +9,64 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author jhonny
  */
 public class categoria {
+ public static LinkedList list(String user, String cat)
+ {
+     LinkedList<revista> tmp=new LinkedList();
+         
+     try {
+         
+        
+         PreparedStatement read2=null;
+         String sql2=null;
+         ResultSet sesion2=null;
+         sql2="select * FROM revista WHERE idcategoria=? ";
+         
+         
+         
+         read2=iniciarConeccion.coneccion.prepareStatement(sql2);
+         read2.setString(1, cat);
+         sesion2=read2.executeQuery();
+         
+          PreparedStatement read=null;
+         String sql=null;
+         ResultSet sesion=null;
+         sql="select idrevista FROM suscripcion WHERE user=? && idrevista=?";
+         
+      
+         while(sesion2.next()){
+           read=iniciarConeccion.coneccion.prepareStatement(sql);
+           read.setString(1,user);
+           read.setInt(2, sesion2.getInt("idrevista"));
+           sesion=read.executeQuery();
+         if(sesion.next()){
+       
+         }
+         
+         else{
+         revista ts=new revista();
+         ts.setDescripcion(sesion2.getString("descripcion"));
+         ts.setId(sesion2.getInt("idrevista"));
+         ts.setNombre(sesion2.getString("nombre"));
+         tmp.add(ts);
+         }
+         }
+         
+         
+         
+          
+         
+     } catch (SQLException ex) {
+     }
  
+ return tmp;}
  public categoria(){
  llenarCategoria();
  }

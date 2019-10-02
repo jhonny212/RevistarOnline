@@ -17,7 +17,7 @@
     </head>
     <body>
         <h1>Costo por dia de una revista</h1>
-        <form action="/Revistas/datos" method="GET">
+        <form action="/Revistas/datos2" method="GET">
            
                 <table class="tabla"> 
                         <thead>

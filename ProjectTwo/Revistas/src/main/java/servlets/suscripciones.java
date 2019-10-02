@@ -10,9 +10,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -61,17 +63,94 @@ public class suscripciones extends HttpServlet {
             
             HttpSession sesion=request.getSession();
             PrintWriter s=response.getWriter();
-            s.print(sesion.getAttribute("usuario"));
-            
-             try {
-            PreparedStatement crearUser=null;
-            
-            crearUser=iniciarConeccion.coneccion.prepareStatement("INSERT INTO datos (nombre,user, edad,direccion, "
-                    + "nacimiento, password) VALUES (?,?,?,?,?,?)");
-        } catch (SQLException ex) {
-        
-        }
            
+            
+            double ganancia=0;
+            double g=1.53;
+            int costo=0;
+                try {
+            PreparedStatement crearUser=null;
+            String sql="select tarifa FROM revista  WHERE idrevista=?";
+            crearUser=iniciarConeccion.coneccion.prepareStatement(sql);
+            crearUser.setInt(1, Integer.parseInt(request.getParameter("id")));
+            ResultSet tm=crearUser.executeQuery();
+           
+            while(tm.next()){
+            
+            costo=(tm.getInt("tarifa"));
+            
+            }
+            
+          
+            
+        } catch (SQLException ex) {
+        s.print(ex.getMessage());
+        }
+                
+          try {
+            PreparedStatement crearUser=null;
+            String sql="select porcentaje FROM datosGlobales ";
+            crearUser=iniciarConeccion.coneccion.prepareStatement(sql);
+           
+            ResultSet tm=crearUser.executeQuery();
+           
+            while(tm.next()){
+            
+            ganancia=(((tm.getInt("porcentaje"))*costo));
+            
+            }
+        
+          
+            
+        } catch (SQLException ex) {
+        s.print(ex.getMessage());
+        }
+            double gs=ganancia/100;
+
+              try {
+            
+            PreparedStatement crearUser=null; 
+             crearUser=iniciarConeccion.coneccion.prepareStatement("INSERT INTO datos ("
+                     + "pago,ganancia, idrevista,user, "
+                    + "fecha) VALUES (?,?,?,?,?)");
+         
+            
+         String startDate=request.getParameter("fecha");
+SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+java.util.Date date = null;
+        try {
+            date = sdf1.parse(startDate);
+        } catch (ParseException ex) {
+       
+        }
+ java.sql.Date sqlStartDate = new java.sql.Date(date.getTime()); 
+        
+        
+             
+            crearUser.setInt(1, costo);
+            crearUser.setDouble(2, gs);
+            crearUser.setInt(3, Integer.parseInt(request.getParameter("id")));
+            crearUser.setString(4, sesion.getAttribute("usuario").toString());
+            crearUser.setDate(5, sqlStartDate);
+            
+          
+       
+            
+         crearUser.executeUpdate();
+         
+            PreparedStatement suscrip=null; 
+             suscrip=iniciarConeccion.coneccion.prepareStatement("INSERT INTO suscripcion ("
+                     + "user,idrevista, estado, "
+                    + "fecha) VALUES (?,?,?,?)");
+             suscrip.setString(1, sesion.getAttribute("usuario").toString());
+             suscrip.setInt(2,  Integer.parseInt(request.getParameter("id")));
+             suscrip.setString(3, "activo");
+             suscrip.setDate(4, sqlStartDate);
+         suscrip.executeUpdate();
+        
+        } catch (SQLException ex) {
+            s.print(ex.getMessage());
+        }
     }
 
     /**

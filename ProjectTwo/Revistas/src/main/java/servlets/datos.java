@@ -52,7 +52,7 @@ public class datos extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+       
                 if(iniciarConeccion.coneccion==null){
             iniciarConeccion.IniciarConeccion();
             }
@@ -61,7 +61,7 @@ public class datos extends HttpServlet {
                     
         
            PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
-           iniciarSesion.setInt(1,Integer.parseInt( request.getParameter("costos")));
+           iniciarSesion.setInt(1,Integer.parseInt((request.getParameter("costos"))));
          
            iniciarSesion.setInt(2,Integer.parseInt(request.getParameter("btn")));
           

@@ -11,6 +11,8 @@
 <%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="classes.categoria"  %>
+<%@page import="classes.revista"  %>
+
 <%@page  session="true" %>
 <!DOCTYPE html>
 
@@ -86,31 +88,24 @@
         String sql=null;
         ResultSet sesion=null;
          char as='"';    
-             String arg=Sesions.getAttribute("usuario").toString();
+             String agr=Sesions.getAttribute("usuario").toString();
           String cadenas=Character.toString(as);
            if( !request.getParameter("name").equals("suscripciones")) {
-           sql="select * FROM revista a join suscripcion b on (a.idrevista != b.idrevista) WHERE b.user=?";
-            read=iniciarConeccion.coneccion.prepareStatement(sql);
+               
+               LinkedList <revista> lis=categoria.list(agr, request.getParameter("name"));
+               
            
-          read.setString(1, arg);
-            sesion=read.executeQuery();
-         
-          
-          
-           while(sesion.next()){
-               if(request.getParameter("name").equals(sesion.getString("idcategoria"))){
-             
-              
-            out.print("<tr>"
+             for(int i=0; i<lis.size(); i++){
+             out.print("<tr>"
                     + "<td style="+cadenas+"font-size: 20px; text-align: center;"+cadenas+
                     "> "
-                    + sesion.getString("nombre")
+                    + lis.get(i).getNombre()
                     + "</td>"
                     + "<td>"
-                    + sesion.getString("descripcion")
+                    + lis.get(i).getDescripcion()
                     + "</td>"
                     + "<td>"
-                    + "<a href="+cadenas+"suscribir.jsp?id="+sesion.getInt("idrevista")+cadenas+""
+                    + "<a href="+cadenas+"suscribir.jsp?id="+lis.get(i).getId()+cadenas+""
                             + "target="+cadenas+"_blank"+cadenas
                             + ""
                                     + "><img  src="+cadenas+"../Imagenes/mpdf.png"+cadenas+" style="+cadenas+"width: 50px; height:50px;"+cadenas+
@@ -119,15 +114,32 @@
                             
                     + "</td>"
                             + "</tr>");
-                            }
-               }
+             
+             
+             }
+            /*    
+           
+                 
+                 
+                 
+             }
+                   */
+                   
+           
+                            
+             
     
+           
+           
+           
+           
+           
            }else{
             
            sql="select a.idrevista, a.nombre, a.descripcion FROM revista a join suscripcion b on a.idrevista=b.idrevista"
                    + " where b.estado='activo' && b.user=?";
              read=iniciarConeccion.coneccion.prepareStatement(sql);
-          read.setString(1, arg);
+          read.setString(1, Sesions.getAttribute("usuario").toString());
           
            
           sesion=read.executeQuery();

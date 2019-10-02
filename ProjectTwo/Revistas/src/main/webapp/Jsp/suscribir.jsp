@@ -15,14 +15,15 @@
         <title>USUARIO</title>
     </head>
     <body>
-       <div class="contenedor1">
-                  <%HttpSession Sesions=request.getSession();
+                <%HttpSession Sesions=request.getSession();
                   usuario tmp=new usuario();
                   tmp=usuario.userDatos(Sesions.getAttribute("usuario").toString());
                    char a='"';    
                 String cadena=Character.toString(a);
                   
         %>
+       <div class="contenedor1">
+          
         <div id="c1">
             <img src="/Revistas/perfilEditor?user="+<%= Sesions.getAttribute("usuario").toString()%>>
                     
@@ -71,8 +72,17 @@
        <hr width=90%>
         
        <form action="/Revistas/suscripciones" method="GET">
+            <%
+                int letra=Integer.parseInt(request.getParameter("id").toString());
+            %>
+         
+        
         <input type="date" name="fecha" style="height: 25px" required id="" >
+   
         <input type="submit" value="suscribir" style="height: 28px"  >
+        <input type="number" style="opacity: 0; cursor:none;" name="id" <%out.print("value="+cadena+
+        letra+cadena);
+        %> />
     </form>
       
          
