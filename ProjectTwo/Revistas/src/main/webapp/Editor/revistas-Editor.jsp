@@ -123,10 +123,10 @@
                     + "<a href="+cadenas+"/Revistas/pdf?id="+sesion.getInt("idrevista")+cadenas+""
                             + "target="+cadenas+"_blank"+cadenas
                             + "> <img  src="+cadenas+"../Imagenes/mpdf.png"+cadenas+" style="+cadenas+"width: 50px; height:50px;"+cadenas+
-                    "></a>"
-                            + ""
+                    "></a><br>"
+                            + "<a href="+cadenas+"comentarios.jsp?id="+sesion.getInt("idrevista")+cadenas
                             
-                    + "</td>"
+                    + ">Consultas pdf </a></td>"
                             + "</tr>");
            }
             } catch (SQLException ex) {

@@ -187,16 +187,23 @@ li img{
 
 }
 .KindRevistas thead th{
-  border-radius: 20px;
+  border-radius: 10px;
   text-align: center;
 }
 #nombre, #pdf{
 
   width: 200px;
-  max-width: 200px;
+  max-width: 100px;
 }
 td{
   text-align: justify;
+  
+}
+a{
+  text-align: center;
+  margin-left: 50px;
+  text-decoration: none;
+  color: white;
 }
 img{
   border-radius: 50%;
