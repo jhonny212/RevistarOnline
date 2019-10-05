@@ -21,7 +21,6 @@
     </head>
     <body>
              <%HttpSession Sesions=request.getSession();
-                      out.print(Sesions.getAttribute("usuario")+"hola");
         %>
         <script type="text/javascript">
 function check(e)
@@ -32,7 +31,7 @@ if (document.form.elements[e-1].checked==false){document.form.elements[e].disabl
 </script>
          <nav class="navegacion">
                 <ul class="menu">
-                    <li><a href="#">Cerrar sesion</a></li>
+                    <li><a href="../Jsp/index.jsp?cerrar=true">Cerrar sesion</a></li>
                     <li><a href="revistas-Editor.jsp" >Revistas</a></li>
                     <li><a href="perfil-editor.jsp" target="blank">perfil</a></li>
                     <li><a href="Editor.jsp">crearRevista</a></li>
@@ -45,7 +44,7 @@ if (document.form.elements[e-1].checked==false){document.form.elements[e].disabl
 
             <div id="categoria">
                 <input type="checkbox" name="check1" onclick="check(1)"  />
-                <input type="text" name="text1" disabled   placeholder="crear nueva categoria" /> 
+                <input type="text" name="text1"   placeholder="crear nueva categoria" /> 
                <textarea name="descripcion" cols="30"  required rows="10">
                 
                </textarea>

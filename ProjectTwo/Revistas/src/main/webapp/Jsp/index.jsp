@@ -56,7 +56,14 @@
                     
                     <%@include  file="../Html/formulario-html.html" %>
                           <% 
-                        if(usuario.message!=null){
+                       if(request.getParameter("cerrar")!=null){
+                       out.print(request.getParameter("cerrar"));
+                       usuario.message=null;
+     
+                       }
+                         
+                              
+                          if(usuario.message!=null){
                             out.print(usuario.message);
                       if(usuario.message.equals("correcto")){
                     

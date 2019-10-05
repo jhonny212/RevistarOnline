@@ -20,7 +20,8 @@
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-          
+           <link rel="stylesheet" href="../Css/revistaEstilo.css">
+       
        
     <script src="http://code.jquery.com/jquery-1.11.3.min.js" ></script>
         <title>Revista</title>
@@ -36,7 +37,7 @@
           <div class="sidebar">
             <h2>MENU</h2>
             <ul>
-                <li><a href="">Cerrar sesion</a></li>
+                <li><a href="index.jsp?cerrar=true">Cerrar sesion</a></li>
                 <li><a href="../Jsp/perfil-usuario.jsp">Perfil</a></li>
                 <li><a href="magazine.jsp?name=suscripciones">Suscripciones</a></li>
                 <li><a href="hacerPago.jsp">Pagos</a></li>
@@ -88,6 +89,12 @@
         PreparedStatement read=null;
         String sql=null;
         ResultSet sesion=null;
+        
+           PreparedStatement read2=null;
+        String sql2=null;
+        ResultSet sesion2=null;
+        
+        
          char as='"';    
              String agr=Sesions.getAttribute("usuario").toString();
           String cadenas=Character.toString(as);
@@ -118,36 +125,53 @@
              
              
              }
-            /*    
-           
-                 
-                 
-                 
-             }
-                   */
-                   
-           
-                            
-             
-    
-           
-           
-           
+      
            
            
            }else{
             
+          sql2="select versiones.idrevista from versiones  WHERE versiones.idrevista=?";
+          read2=iniciarConeccion.coneccion.prepareStatement(sql2);
+          read2.setString(1, Sesions.getAttribute("usuario").toString());
+          sesion2=read2.executeQuery();
+       
+               
+              if(sesion2.next()){
+              
+              
+              }
+               
+               
+               
            sql="select a.idrevista, a.nombre, a.descripcion FROM revista a join suscripcion b on a.idrevista=b.idrevista"
                    + " where b.estado='activo' && b.user=?";
-             read=iniciarConeccion.coneccion.prepareStatement(sql);
+          read=iniciarConeccion.coneccion.prepareStatement(sql);
           read.setString(1, Sesions.getAttribute("usuario").toString());
-          
+          int count=0;
            
           sesion=read.executeQuery();
          
        
               while(sesion.next()){
-             
+                  sql2="select versiones.idrevista from versiones  WHERE versiones.idrevista=?";
+          read2=iniciarConeccion.coneccion.prepareStatement(sql2);
+          read2.setInt(1,sesion.getInt("idrevista"));
+          sesion2=read2.executeQuery();
+          String newVersion="";
+               
+              while(sesion2.next()){
+              
+                 
+                   newVersion+="<br><a href="+cadenas+"/Revistas/pdf2?id="+sesion.getInt("idrevista")+cadenas+""
+                            + "target="+cadenas+"_blank"+cadenas
+                            + " "
+                                    + "><img  src="+cadenas+"../Imagenes/mpdf.png"+cadenas+" style="+cadenas+"width: 50px; height:50px;"+cadenas+
+                    "></a><a href="+cadenas+"comentario"
+                            + "Megusta.jsp?id="+sesion.getInt("idrevista")+cadenas+" tar"
+                                    + "get="+cadenas+"_blank"+cadenas+" >comentarios </a>";   
+                   
+              
+              }
                
             out.print("<tr>"
                     + "<td style="+cadenas+"font-size: 20px; text-align: center;"+cadenas+
@@ -166,8 +190,9 @@
                             + "Megusta.jsp?id="+sesion.getInt("idrevista")+cadenas+" tar"
                                     + "get="+cadenas+"_blank"+cadenas+" >comentarios </a>"
                             
-                    + "</td>"
+                    + ""+newVersion+"</td>"
                             + "</tr>");
+            count++;
            }
      
            }

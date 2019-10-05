@@ -9,6 +9,7 @@ import classes.iniciarConeccion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -57,6 +58,21 @@ public class comentLike extends HttpServlet {
             throws ServletException, IOException {
         
         
+        String username=null;
+        PreparedStatement edit=null;
+        try {
+            edit=iniciarConeccion.coneccion.prepareStatement("SELECT username FROM revista where idrevista=?");
+            
+            edit.setInt(1, Integer.parseInt(request.getParameter("id")));
+            ResultSet ts=edit.executeQuery();
+            if(ts.next()){
+            username=ts.getString("username");
+            }
+        } catch (SQLException ex) {
+        
+        }
+
+        
          processRequest(request, response);
                    
          String startDate=request.getParameter("fecha");
@@ -70,20 +86,19 @@ java.util.Date date = null;
  java.sql.Date sqlStartDate = new java.sql.Date(date.getTime()); 
         
           PrintWriter s=response.getWriter();
-        s.print(request.getParameter("id"));
        try {
             processRequest(request, response);
              HttpSession sesion=request.getSession();
             
             PreparedStatement crearUser=null;
-            crearUser=iniciarConeccion.coneccion.prepareStatement("INSERT INTO Ilike (idrevista, user, fecha) values (?,?,?)");
+            crearUser=iniciarConeccion.coneccion.prepareStatement("INSERT INTO Ilike (idrevista, user, fecha,editor) values (?,?,?,?)");
 
             crearUser.setInt(1, Integer.parseInt(request.getParameter("id")));
             crearUser.setString(2, sesion.getAttribute("usuario").toString());
             crearUser.setDate(3, sqlStartDate);
+            crearUser.setString(4, username);
              crearUser.executeUpdate();
         } catch (SQLException ex) {
-      s.print(ex.getMessage());
         }
     
     }

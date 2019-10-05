@@ -120,14 +120,16 @@ public class datos2 extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-         HttpSession sesion=request.getSession();
+        // variable fecha
+         java.util.Date date1=null;
+        java.sql.Date sqlStartDate1=null;
+        HttpSession sesion=request.getSession();
         
         
       
             PrintWriter s=response.getWriter();
          try {
-         
+         // seleccionar todas las suscripciones para ver el estado, de dicho usuario
         
          PreparedStatement read2=null;
          String sql2=null;
@@ -147,7 +149,12 @@ public class datos2 extends HttpServlet {
     
            
          while(sesion2.next()){
+              // obtener fehca de suscripcion
               
+              
+             date1 = sesion2.getDate("fecha");
+              sqlStartDate1 = new java.sql.Date(date1.getTime()); 
+             /// statement diferencia de meses
          PreparedStatement read3=null;
          String sql3=null;
          ResultSet sesion3=null;
@@ -160,8 +167,8 @@ public class datos2 extends HttpServlet {
                      
          String startDate=request.getParameter("fecha");
 SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-java.util.Date date = null;
-
+    java.util.Date date = null;
+// parsear fecha
         try {
             date = sdf1.parse(startDate);
         } catch (ParseException ex) {
@@ -173,6 +180,7 @@ java.util.Date date = null;
                    PreparedStatement iniciarSesion=null;
             if(sesion3.next()){
               
+                //condicion 1 si ni con el pago actualiza la suscripcion
              if(sesion3.getLong(1)<0){
                 sql="UPDATE suscripcion SET fecha=? WHERE idrevista=? && user=? ";
            
@@ -188,9 +196,11 @@ java.util.Date date = null;
               iniciarSesion.executeUpdate();
               s.print("entra ssa");
               int codtmo=(int) Math.abs(sesion3.getLong(1));
+              // funcion pago
               pago(Integer.parseInt(request.getParameter("btn")),
-                      sesion.getAttribute("usuario").toString(), codtmo,startDate);
+                      sesion.getAttribute("usuario").toString(), codtmo,startDate, sqlStartDate1);
              }else{
+                 // si el pago es suficiente
                  s.print("no entra");
                  sql="UPDATE suscripcion SET estado=?, fecha=? WHERE idrevista=? && user=? ";
                 iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
@@ -204,7 +214,7 @@ java.util.Date date = null;
             int codtmo=(int) Math.abs(sesion3.getLong(1));
             s.print(codtmo+"wtf");
            pago(Integer.parseInt(request.getParameter("btn")),sesion.getAttribute("usuario").toString(), 
-                   codtmo,startDate);
+                   codtmo,startDate,sqlStartDate1);
             
              }
              
@@ -230,11 +240,13 @@ java.util.Date date = null;
      response.sendRedirect("Jsp/magazine.jsp");
      
     }
-    public void pago(int id, String cod, int cod2,String fecha){
+    public void pago(int id, String cod, int cod2,String fecha,   java.sql.Date fecha1){
     double ganancia=0;
             double g=1.53;
             int costo=0;
             int gananciaEdit=0;
+            
+            // obetener datos para hacer pago
                 try {
             PreparedStatement crearUser=null;
             String sql="select tarifa, costo FROM revista  WHERE idrevista=?";
@@ -243,9 +255,9 @@ java.util.Date date = null;
             ResultSet tm=crearUser.executeQuery();
            
             while(tm.next()){
-            
+            // costo por dia
             costo=(cod2*30*(tm.getInt("tarifa")));
-            
+            // ganancia editor
             gananciaEdit=(cod2*(tm.getInt("costo")));
             }
             
@@ -262,7 +274,7 @@ java.util.Date date = null;
             ResultSet tm=crearUser.executeQuery();
            
             while(tm.next()){
-            
+            // ganacia cliente
             ganancia=(((tm.getInt("porcentaje"))*gananciaEdit));
             
             }
@@ -271,6 +283,7 @@ java.util.Date date = null;
             
         } catch (SQLException ex) {
         }
+          
             double gs=ganancia/100;
 
               try {
@@ -278,9 +291,9 @@ java.util.Date date = null;
             PreparedStatement crearUser=null; 
              crearUser=iniciarConeccion.coneccion.prepareStatement("INSERT INTO datos ("
                      + "pago,ganancia, idrevista,user, "
-                    + "fecha, gananciaEditor) VALUES (?,?,?,?,?,?)");
+                    + "fecha, gananciaEditor,fecha1) VALUES (?,?,?,?,?,?,?)");
          
-            
+           // parsear fecha que se hara pagi 
          String startDate=fecha;
 SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 java.util.Date date = null;
@@ -291,7 +304,7 @@ java.util.Date date = null;
         }
  java.sql.Date sqlStartDate = new java.sql.Date(date.getTime()); 
         
-        
+        // crear pago
              
             crearUser.setInt(1, costo);
             crearUser.setDouble(2, gs);
@@ -300,6 +313,7 @@ java.util.Date date = null;
             crearUser.setDate(5, sqlStartDate);
             
             crearUser.setDouble(6, (gananciaEdit-gs));
+            crearUser.setDate(7, fecha1);
           
        
             

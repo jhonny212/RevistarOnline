@@ -24,6 +24,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -64,7 +65,8 @@ import javax.servlet.http.Part;
         
         processRequest(request, response);
         
-         if(iniciarConeccion.coneccion==null){
+        
+          if(iniciarConeccion.coneccion==null){
             iniciarConeccion.IniciarConeccion();
             }
         String sql = "SELECT * FROM usuario where user=?";  
@@ -76,10 +78,10 @@ import javax.servlet.http.Part;
           BufferedOutputStream of=null;
           response.setContentType("/image*");
           
-          
+           HttpSession sesion=request.getSession();
        try {
             ps2 = iniciarConeccion.coneccion.prepareStatement(sql);
-            ps2.setString(1, "user111");
+            ps2.setString(1, sesion.getAttribute("usuario").toString());
             tmp=ps2.executeQuery();
               out=response.getOutputStream();
            if(tmp.next()){
@@ -100,45 +102,7 @@ import javax.servlet.http.Part;
         } catch (Exception ex) {
             
         }
-       /*  if(iniciarConeccion.coneccion==null){
-            iniciarConeccion.IniciarConeccion();
-            }
-        
-                    String sql = "SELECT perfil FROM usuario where user=user111";  
-         PreparedStatement ps2 = null;
-         ResultSet tmp=null;
-          InputStream input=null;
-          OutputStream out=null;
-          BufferedInputStream bf=null;
-          BufferedOutputStream of=null;
-          response.setContentType("/image*");
-          
-          
-       try {
-            ps2 = iniciarConeccion.coneccion.prepareStatement(sql);
-            tmp=ps2.executeQuery();
-              out=response.getOutputStream();
-           if(tmp.next()){
-               input=tmp.getBinaryStream("perfil");
-           
-           
-           
-           }
-           bf=new  BufferedInputStream (input);
-           of=new BufferedOutputStream(out);
-           int i=0;
-           while((i=bf.read())!=-1){
-               of.write(i);
-           }
-           
-        } catch (SQLException ex) {
-                  PrintWriter s=response.getWriter();
-                s.print(ex.getMessage());
-            
-        } catch (Exception ex) {
-                  PrintWriter s=response.getWriter();
-                s.print(ex.getMessage());
-        }*/
+      
         
     }
 
@@ -159,7 +123,14 @@ import javax.servlet.http.Part;
          InputStream inputStream = null;
     Part filePart = request.getPart("archivo");
      inputStream=filePart.getInputStream();
-        
+      
+        PrintWriter s=response.getWriter();      
+     if(inputStream==null){
+     s.print("hola");
+     }else{
+     s.print("aca");
+     }
+       
      
      
          if(iniciarConeccion.coneccion==null){
@@ -174,6 +145,7 @@ import javax.servlet.http.Part;
        // }else{
          //  sql="SELECT editor.username, editor.password FROM editor WHERE username=? && password=?";
           // }
+           HttpSession sesion=request.getSession();
            PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
            iniciarSesion.setString(1, request.getParameter("nombre"));
            iniciarSesion.setString(2, request.getParameter("direccion"));
@@ -184,7 +156,7 @@ import javax.servlet.http.Part;
            iniciarSesion.setString(4, request.getParameter("temaInteres"));
            
             iniciarSesion.setBlob(8, inputStream);
-           iniciarSesion.setString(9, "user111");
+           iniciarSesion.setString(9, sesion.getAttribute("usuario").toString());
            
            
            
@@ -193,7 +165,7 @@ import javax.servlet.http.Part;
            
 
        } catch (SQLException ex) {
-                PrintWriter s=response.getWriter();
+              
                 s.print(ex.getMessage());
             
             }

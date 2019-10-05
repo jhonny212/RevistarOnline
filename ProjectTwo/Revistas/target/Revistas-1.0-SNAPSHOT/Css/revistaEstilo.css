@@ -172,14 +172,12 @@ li img{
   margin: auto;
  
 
-  border-radius: 20px;
 }
  td{
   border: 1px solid rgb(121, 120, 120);
   opacity: 0.8;
   background: rgb(185, 170, 170);
   color: #000000;
-  border-radius: 200px;
 }
 .KindRevistas thead{
   background: rgb(104, 14, 14);
@@ -187,7 +185,7 @@ li img{
 
 }
 .KindRevistas thead th{
-  border-radius: 10px;
+
   text-align: center;
 }
 #nombre, #pdf{

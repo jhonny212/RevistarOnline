@@ -32,18 +32,22 @@
               
             <nav class="navegacion">
                     <ul class="menu">
-                       <% 
-                         out.print("<li><a href="+cadenas+"likes.jsp?id="+id+cadenas+">Likes</a></li>");
-                        out.print("<li><a href="+cadenas+"comentarios.jsp?id="+id+cadenas+">Comentadas</a></li>");
-                         out.print("<li><a href="+cadenas+"suscripciones.jsp?id="+id+cadenas+">Suscrip</a></li>");
+ <% 
+                           if(iniciarConeccion.coneccion==null){
+                           iniciarConeccion.IniciarConeccion();
+                           }
+                        
+                        out.print("<li><a href="+cadenas+"likes.jsp?id="+id+cadenas+">Likes</a></li>");
+                        out.print("<li><a href="+cadenas+"comentarios.jsp?id="+id+cadenas+">Comentarios</a></li>");
+                         out.print("<li><a href="+cadenas+"suscripciones.jsp?id="+id+cadenas+">Suscripcion</a></li>");
+                         out.print("<li><a href="+cadenas+"ganancias.jsp?id="+id+cadenas+">Ganancias</a></li>");
+                         out.print("<li><a href="+cadenas+"agregarRevista.jsp?id="+id+cadenas+">Agregar Revista</a></li>");
                        
-                        %>
-                                                    
-                    </ul>
+                        %>                    </ul>
                 </nav>  
-    </header>
-                        <h1>Listado de comentarios de revista</h1>
-                        <h2>Puedes eliminar el comentario pulsando el boton correspondiente al comentario</h2>
+          </header>           <br>
+                        <h1 style="margin: auto; width: 90%">Listado de comentarios de revista</h1>
+                        <br>
         <%HttpSession Sesions=request.getSession();
                   usuario tmp=new usuario();
                   tmp=usuario.userDatos(Sesions.getAttribute("usuario").toString());
@@ -51,12 +55,37 @@
                 String cadena=Character.toString(a);
                   
         %>  <div class="comentario">
+            
+              <form method="get" action="comentarios.jsp">
+                        <input type="date" name="f1"  >
+                        
+                        <br>
+                        <br>
+                        
+                        <input type="date" name="f2" >
+                        <br>
+                        <input type="submit" style="width:70px" value="Ok">
+    <%out.print("<input type="+cadenas+"text"+cadenas+"name="+cadenas+"id"+cadenas+"style="+cadenas+"opacity: 0; "
+            + "cursor: none; height: 0;"
+            + ""+cadenas+" value="+cadenas+id+cadenas+" >");
+                        
+      %>                         
+                      </form>  
+                      <br>
            <% 
                        
                          HttpSession sesion=request.getSession();
-                        
+                        String f1=null;
+                        String f2=null;
                           try {
-            String  sql="select comentario from comentario WHERE idrevista=? && user=? ";
+                               if(request.getParameter("f1")!=null){
+                               f1=request.getParameter("f1");
+                        f2=request.getParameter("f2");
+                        
+                               }
+             String  sql="select comentario, user from comentario WHERE (idrevista=? && user=? "
+                    + "&&( fecha between '"+f1+"' and  '"+f2+"' )) ";
+         
                     
         
            PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
@@ -68,12 +97,12 @@
            
           
            while(res.next()){
-          out.print("<textarea disabled cols="+cadena+"30"+cadena+"rows="+cadena+"5"+cadena+">"+res.getString("comentario")
+          out.print("<textarea title="+cadena+res.getString("user")+cadena+" disabled cols="+cadena+"30"+cadena+"rows="+cadena+"5"+cadena+">"+res.getString("comentario")
                   +"</textarea>");
            }
   
        } catch (SQLException ex) {
-           out.print(ex.getMessage());
+        
          }
                     
 

@@ -49,7 +49,7 @@
         <div class="sidebar">
             <h2>MENU</h2>
             <ul>
-                <li><a href="">Cerrar sesion</a></li>
+                <li><a href="../Jsp/index.jsp?cerrar=true">Cerrar sesion</a></li>
                 <li><a href="perfil-editor.jsp" target="blank" >Perfil</a></li>
                 <li><a href="Editor.jsp">Crear revista</a> </li>
                 <%
@@ -126,7 +126,7 @@
                     "></a><br>"
                             + "<a href="+cadenas+"comentarios.jsp?id="+sesion.getInt("idrevista")+cadenas
                             
-                    + ">Consultas pdf </a></td>"
+                    + "target="+cadenas+"_blank"+cadenas+">Consultas pdf </a></td>"
                             + "</tr>");
            }
             } catch (SQLException ex) {

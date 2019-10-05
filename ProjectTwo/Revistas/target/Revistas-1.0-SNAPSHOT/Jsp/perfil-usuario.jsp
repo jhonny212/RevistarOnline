@@ -22,7 +22,7 @@
                       
             <nav class="navegacion">
                     <ul class="menu">
-                        <li><a href="#">Cerrar sesion</a></li>
+                        <li><a href="index.jsp?cerrar=true">Cerrar sesion</a></li>
                         <li><a href="magazine.jsp">Revistas</a></li>
                         <li><a href="perfil-usuario.jsp">perfil</a></li>
                                                     

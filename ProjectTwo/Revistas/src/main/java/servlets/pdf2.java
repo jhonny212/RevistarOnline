@@ -5,10 +5,10 @@
  */
 package servlets;
 
+import classes.iniciarConeccion;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import classes.iniciarConeccion;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,8 +22,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jhonny
  */
-@WebServlet(name = "pdf", urlPatterns = {"/pdf"})
-public class pdf extends HttpServlet {
+@WebServlet(name = "pdf2", urlPatterns = {"/pdf2"})
+public class pdf2 extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,7 +36,7 @@ public class pdf extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-  response.setContentType("application/pdf");
+         response.setContentType("application/pdf");
    PreparedStatement ps = null;
         ResultSet rs = null;
         byte[] b = null;
@@ -44,7 +44,7 @@ public class pdf extends HttpServlet {
         try {
 
             int id = Integer.parseInt(request.getParameter("id"));
-            ps = iniciarConeccion.coneccion.prepareStatement("SELECT revistaG FROM revista WHERE idrevista=?;");
+            ps = iniciarConeccion.coneccion.prepareStatement("SELECT revistaG FROM versiones WHERE idrevista=?;");
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {

@@ -21,15 +21,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
  *
  * @author jhonny
  */
-@WebServlet(name = "perfilEditor", urlPatterns = {"/perfilEditor"})
- @MultipartConfig (maxFileSize = 16177215) public class perfilEditor extends HttpServlet {
+@WebServlet(name = "prueba", urlPatterns = {"/prueba"})
+@MultipartConfig (maxFileSize = 16177215) public class prueba extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,8 +41,7 @@ import javax.servlet.http.Part;
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-      
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,12 +56,10 @@ import javax.servlet.http.Part;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-           
         processRequest(request, response);
-   
+            
         
-        HttpSession sesion=request.getSession();
-          if(iniciarConeccion.coneccion==null){
+     if(iniciarConeccion.coneccion==null){
             iniciarConeccion.IniciarConeccion();
             }
         String sql = "SELECT * FROM editor where username=?";  
@@ -78,7 +74,7 @@ import javax.servlet.http.Part;
           
        try {
             ps2 = iniciarConeccion.coneccion.prepareStatement(sql);
-            ps2.setString(1, sesion.getAttribute("usuario").toString());
+            ps2.setString(1, "user111");
             tmp=ps2.executeQuery();
               out=response.getOutputStream();
            if(tmp.next()){
@@ -95,15 +91,11 @@ import javax.servlet.http.Part;
            }
            
         } catch (SQLException ex) {
-            response.sendRedirect("dsa");
     
         } catch (Exception ex) {
-             response.sendRedirect("dsa");
+            
         }
-        
-        
-        
-        
+    
     }
 
     /**
@@ -117,54 +109,43 @@ import javax.servlet.http.Part;
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         processRequest(request, response);
-         HttpSession sesion=request.getSession();
-        PrintWriter s=response.getWriter();
-           InputStream inputStream = null;
+        InputStream inputStream = null;
     Part filePart = request.getPart("archivo");
      inputStream=filePart.getInputStream();
         
-     
-        if(inputStream==null){
-     s.print("hola");
-     }else{
-     s.print("aca");
-     }
-       
      
      
          if(iniciarConeccion.coneccion==null){
             iniciarConeccion.IniciarConeccion();
             }
         try {
-            
            String sql=null;
-            sql="UPDATE editor SET nombre=?,  direccion=?, "
-                    + "descripcion=?, sexo=?, suscripcionGlobal=?, perfil=? WHERE username=?";
-     
+          // if(kind.equals("Usuario")){
+            sql="UPDATE editor SET perfil=? WHERE username=?";
+       // }else{
+         //  sql="SELECT editor.username, editor.password FROM editor WHERE username=? && password=?";
+          // }
            PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
-           iniciarSesion.setString(1, request.getParameter("nombre"));
-           iniciarSesion.setString(2, request.getParameter("direccion"));
-           iniciarSesion.setString(3, request.getParameter("descripcion"));
-          iniciarSesion.setString(4, request.getParameter("opcion"));
-            iniciarSesion.setInt(5,Integer.parseInt( request.getParameter("suscrip")));
+         
            
-            iniciarSesion.setBlob(6, inputStream);
-           iniciarSesion.setString(7, sesion.getAttribute("usuario").toString());
+            iniciarSesion.setBlob(1, inputStream);
+           iniciarSesion.setString(2, "user111");
            
            
            
            
            iniciarSesion.executeUpdate();
-           
+            PrintWriter s=response.getWriter();
+                s.print("todo bien");
             
-           
+
        } catch (SQLException ex) {
-                
+                PrintWriter s=response.getWriter();
                 s.print(ex.getMessage());
             
             }
+        
         
     }
 

@@ -7,6 +7,7 @@ package servlets;
 
 import classes.iniciarConeccion;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -18,18 +19,20 @@ import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author jhonny
  */
-@WebServlet(name = "suscripciones", urlPatterns = {"/suscripciones"})
-public class suscripciones extends HttpServlet {
+@WebServlet(name = "suscripciones", urlPatterns = {"/suscripciones"})  @MultipartConfig (maxFileSize = 16177215) 
+ public class suscripciones extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -64,7 +67,7 @@ public class suscripciones extends HttpServlet {
             HttpSession sesion=request.getSession();
             PrintWriter s=response.getWriter();
            
-            
+         
             double ganancia=0;
             double g=1.53;
             int costo=0;
@@ -165,6 +168,28 @@ java.util.Date date = null;
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+           if(iniciarConeccion.coneccion==null){
+            iniciarConeccion.IniciarConeccion();
+            }
+          InputStream input= null;
+    Part filePart = request.getPart("archivo");
+     input=filePart.getInputStream();
+        
+     String sql = "INSERT INTO versiones (idrevista, revistaG) VALUES(?,?)";
+      PreparedStatement ps2 = null;
+        try {
+            ps2 = iniciarConeccion.coneccion.prepareStatement(sql);
+           
+            
+            ps2.setInt(1, Integer.parseInt(request.getParameter("id")));
+         
+            ps2.setBlob(2, input);
+         
+            ps2.executeUpdate();
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        
     }
 
     /**
