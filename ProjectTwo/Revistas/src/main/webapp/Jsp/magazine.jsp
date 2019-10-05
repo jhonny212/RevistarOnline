@@ -4,6 +4,7 @@
     Author     : jhonny
 --%>
 
+<%@page import="servlets.iniciarSesion"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -12,6 +13,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="classes.categoria"  %>
 <%@page import="classes.revista"  %>
+<%@page import="classes.usuario"  %>
 
 <%@page  session="true" %>
 <!DOCTYPE html>
@@ -33,6 +35,21 @@
         <%@include file="../Html/ArchivoRevista.html" %>
         <% HttpSession Sesions=request.getSession();
         revista.actualizarSuscripcion();
+         
+                 if(usuario.message==null){
+        
+            response.sendRedirect("index.jsp");
+                if(iniciarSesion.tip.equals("Usuario")){
+     
+       }else{
+     
+       response.sendRedirect("../Editor/Editor.jsp");
+      
+       } 
+        }
+         
+               
+              
         %>
           <div class="sidebar">
             <h2>MENU</h2>

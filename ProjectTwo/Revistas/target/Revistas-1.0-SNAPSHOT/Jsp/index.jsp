@@ -57,7 +57,7 @@
                     <%@include  file="../Html/formulario-html.html" %>
                           <% 
                        if(request.getParameter("cerrar")!=null){
-                       out.print(request.getParameter("cerrar"));
+                           
                        usuario.message=null;
      
                        }

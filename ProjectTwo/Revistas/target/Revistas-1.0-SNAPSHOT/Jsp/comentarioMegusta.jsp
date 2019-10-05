@@ -4,6 +4,7 @@
     Author     : jhonny
 --%>
 
+<%@page import="servlets.iniciarSesion"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="classes.iniciarConeccion"%>
@@ -21,6 +22,21 @@
         <title>JSP Page</title>
     </head>
     <body>
+           <%
+                 if(usuario.message==null){
+        
+            response.sendRedirect("index.jsp");
+                if(iniciarSesion.tip.equals("Usuario")){
+    
+       }else{
+     
+       response.sendRedirect("../Editor/Editor.jsp");
+      
+       } 
+        }
+         
+               
+               %>
          <%HttpSession Sesions=request.getSession();
                   usuario tmp=new usuario();
                   tmp=usuario.userDatos(Sesions.getAttribute("usuario").toString());

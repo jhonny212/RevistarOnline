@@ -4,6 +4,7 @@
     Author     : jhonny
 --%>
 
+<%@page import="servlets.iniciarSesion"%>
 <%@page import="classes.usuario"%>
 <%@page import="servlets.perfilEditor"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,7 +17,18 @@
         <title>Editor</title>
     </head>
     <body>
-                    
+                       <%
+                 if(usuario.message==null){
+        
+            response.sendRedirect("../Jsp/index.jsp");
+            if(iniciarSesion.tip.equals("Usuario")){
+       response.sendRedirect("../Jsp/magazine.jsp");
+       
+       } 
+        }
+          
+               
+               %>
         <form action="/Revistas/perfilEditor" method="POST"  enctype="multipart/form-data">
                 <div class="perfil">
                   

@@ -5,6 +5,8 @@
 --%>
 
 
+<%@page import="servlets.iniciarSesion"%>
+<%@page import="classes.usuario"%>
 <%@page import="java.sql.SQLException"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="java.sql.ResultSet"%>
@@ -44,7 +46,18 @@
     }
     </script>
     </head>
-
+   <%
+                 if(usuario.message==null){
+        
+            response.sendRedirect("../Jsp/index.jsp");
+            if(iniciarSesion.tip.equals("Usuario")){
+       response.sendRedirect("../Jsp/magazine.jsp");
+       
+       } 
+        }
+          
+               
+               %>
     <body onload="My_onLoad()">
         <div class="sidebar">
             <h2>MENU</h2>

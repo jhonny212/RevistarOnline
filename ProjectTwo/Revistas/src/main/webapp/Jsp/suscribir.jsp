@@ -4,6 +4,7 @@
     Author     : jhonny
 --%>
 
+<%@page import="servlets.iniciarSesion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="classes.usuario"%>
 <%@page  session="true" %>
@@ -15,6 +16,22 @@
         <title>USUARIO</title>
     </head>
     <body>
+           <%
+               
+                 if(usuario.message==null){
+        
+            response.sendRedirect("index.jsp");
+                if(iniciarSesion.tip.equals("Usuario")){
+       response.sendRedirect("magazine.jsp");
+       
+       }else{
+     
+       response.sendRedirect("../Editor/Editor.jsp");
+      
+       } 
+        }
+           
+               %>
                 <%HttpSession Sesions=request.getSession();
                   usuario tmp=new usuario();
                   tmp=usuario.userDatos(Sesions.getAttribute("usuario").toString());

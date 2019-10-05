@@ -4,6 +4,8 @@
     Author     : jhonny
 --%>
 
+<%@page import="classes.usuario"%>
+<%@page import="servlets.iniciarSesion"%>
 <%@page import="classes.revista"%>
 <%@page import="classes.categoria"%>
 <%@page import="java.util.LinkedList"%>
@@ -21,7 +23,22 @@
               <div class="tarifa">
               
                        
+                 <%
+                 if(usuario.message==null){
+        
+            response.sendRedirect("index.jsp");
+                if(iniciarSesion.tip.equals("Usuario")){
+   
+       
+       }else{
+     
+       response.sendRedirect("../Editor/Editor.jsp");
+      
+       } 
+        }
+         
                
+               %>
     
                       
                 </div>

@@ -4,6 +4,8 @@
     Author     : jhonny
 --%>
 
+<%@page import="servlets.iniciarSesion"%>
+<%@page import="classes.usuario"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="classes.iniciarConeccion"%>
 <%@page import="classes.iniciarConeccion"%>
@@ -22,7 +24,18 @@
     </head>
     <body>
           <header>
-              
+                 <%
+                 if(usuario.message==null){
+        
+            response.sendRedirect("../Jsp/index.jsp");
+            if(iniciarSesion.tip.equals("Usuario")){
+       response.sendRedirect("../Jsp/magazine.jsp");
+       
+       } 
+        }
+          
+               
+               %>
               <% 
                char as='"';    
           String cadenas=Character.toString(as);

@@ -8,6 +8,7 @@ package servlets;
 import classes.iniciarConeccion;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
@@ -123,22 +124,30 @@ import javax.servlet.http.Part;
         String costo=request.getParameter("costo");  
         String cat1=request.getParameter("text1");  
         String descripcion=request.getParameter("descripcion");
-        
+         PrintWriter s=response.getWriter();;
         
            InputStream input= null;
     Part filePart = request.getPart("fichero");
      input=filePart.getInputStream();
         
          if(cat1==null){
-         cat1=request.getParameter("categorias");
+            
+              s.print("joder");
+          cat1=request.getParameter("categorias");
          }else{
+              if(cat1.equals("")){
+              cat1=request.getParameter("categorias");
+             s.print(cat1);
+             }else{
+                    s.print("joder3");
             try {
                 PreparedStatement crearcat=iniciarConeccion.coneccion.prepareStatement("INSERT INTO categoria  (idcategoria) VALUES (?)");
                 crearcat.setString(1, cat1);
                 crearcat.executeUpdate();
             } catch (SQLException ex) {
             }
-     
+     }
+              
            
          }
         

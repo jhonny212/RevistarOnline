@@ -4,6 +4,7 @@
     Author     : jhonny
 --%>
 
+<%@page import="servlets.iniciarSesion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="classes.usuario"  %>
 <!DOCTYPE html>
@@ -14,6 +15,22 @@
     </head>
     <body>
         
+           <%
+               
+                 if(usuario.message==null){
+        
+            response.sendRedirect("index.jsp");
+                if(iniciarSesion.tip.equals("Usuario")){
+      
+       
+       }else{
+     
+       response.sendRedirect("../Editor/Editor.jsp");
+      
+       } 
+        }
+           
+               %>
            <header>
         <nav class="navegacion">
                 <ul class="menu">
