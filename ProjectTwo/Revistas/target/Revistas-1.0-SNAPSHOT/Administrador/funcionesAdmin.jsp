@@ -4,6 +4,7 @@
     Author     : jhonny
 --%>
 
+<%@page import="classes.iniciarConeccion"%>
 <%@page import="classes.revista"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="classes.categoria"%>
@@ -12,11 +13,41 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="../Css/menu-bar-estilo.css">
+           
         <link rel="stylesheet" href="../Css/admin.css">
         
         <title>actualizar datos</title>
     </head>
     <body>
+         <header>
+              
+              <% 
+               char as='"';    
+          String cadenas=Character.toString(as);
+          String id=request.getParameter("id");
+              %>
+            <nav class="navegacion">
+                    <ul class="menu">
+                       <% 
+                           if(iniciarConeccion.coneccion==null){
+                           iniciarConeccion.IniciarConeccion();
+                           }
+                   out.print("<li><a href="+cadenas+"comentadas.jsp?id="+id+cadenas+">comentarios</a></li>");
+                        out.print("<li><a href="+cadenas+"fijarCosto.jsp?id="+id+cadenas+">fijar costos</a></li>");
+                         out.print("<li><a href="+cadenas+"funcionesAdmin.jsp?id="+id+cadenas+">funciones admin</a></li>");
+                         out.print("<li><a href="+cadenas+"ganancias.jsp?id="+id+cadenas+">Ganancias</a></li>");
+                         out.print("<li><a href="+cadenas+"likes.jsp?id="+id+cadenas+">likes</a></li>");
+                         out.print("<li><a href="+cadenas+"revistas.jsp?id="+id+cadenas+">revistas</a></li>");
+                              %>
+                            
+                        
+                        
+                
+                                                    
+                    </ul>
+                </nav>  
+    </header>
         <br>
         <br>
          

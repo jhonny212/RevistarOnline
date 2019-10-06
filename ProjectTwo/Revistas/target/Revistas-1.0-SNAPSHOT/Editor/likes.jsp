@@ -24,6 +24,7 @@
           <header>
               
                  <%
+                     HttpSession sesion=request.getSession();
                  if(usuario.message==null){
         
             if(iniciarSesion.tip!=null){
@@ -31,8 +32,8 @@
        response.sendRedirect("../Jsp/magazine.jsp");
        
        }else{
-       response.sendRedirect("../Jsp/index.jsp");
-                    
+                      
+            
                     }
             }
             
@@ -101,7 +102,7 @@
                            <% 
                                   char a='"';    
                 String c=Character.toString(a);
-             HttpSession sesion=request.getSession();
+             
                String f1=null;
                         String f2=null;
                         

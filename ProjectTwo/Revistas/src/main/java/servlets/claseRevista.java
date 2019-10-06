@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -56,56 +57,52 @@ import javax.servlet.http.Part;
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
-         InputStream inputStream = null;
-    Part filePart = request.getPart("fichero");
-     inputStream=filePart.getInputStream();
-      // inputStream=filePart.getInputStream();
-        
-        
-        
-       /* String nombre=request.getParameter("nombre");
-        String costo=request.getParameter("costo");  
-        String cat1=request.getParameter("text1");  
-        String descripcion=request.getParameter("descripcion");
-        
-        
-           InputStream input= null;
-    Part filePart = request.getPart("imagen");
-     input=filePart.getInputStream();
-        
-         if(cat1==null){
-         cat1=request.getParameter("categorias");
-         }else{
-            try {
-                PreparedStatement crearcat=iniciarConeccion.coneccion.prepareStatement("INSERT INTO categoria  (idcategoria) VALUES (?)");
-                crearcat.setString(1, cat1);
-                crearcat.executeUpdate();
-            } catch (SQLException ex) {
+if(iniciarConeccion.coneccion==null){
+            iniciarConeccion.IniciarConeccion();
             }
-     
+                 
+                  int costo=0;
+        PrintWriter s=response.getWriter();
+        if(Integer.parseInt((request.getParameter("costos")))==0   ){
+                 try {
+            PreparedStatement crearUser=null;
+            String sql="select costoDia FROM datosGlobales WHERE id=?";
+            crearUser=iniciarConeccion.coneccion.prepareStatement(sql);
+            crearUser.setInt(1, 1);
+            ResultSet tm=crearUser.executeQuery();
            
-         }
-        
-      String sql = "INSERT INTO revista (nombre, username, idcategoria, costo,revistaG, descripcion) VALUES(?,"
-              + " ?, ?,?, ?,? );";  
-      PreparedStatement ps2 = null;
-        try {
-            ps2 = iniciarConeccion.coneccion.prepareStatement(sql);
-            ps2.setString(1,"nombre");
-            ps2.setString(2, "user111");
-            ps2.setString(3, "fisica");
-            ps2.setInt(4, 10);
-            ps2.setBlob(5, input);
-            ps2.setString(6, descripcion);
-            ps2.executeUpdate();
+            while(tm.next()){
+            
+            costo=(tm.getInt("costoDia"));
+            
+            }
+            
+          
+            
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        } 
-             
-             */
+            s.print(ex.getMessage());
+        }
+         
+        }else{
+        costo=Integer.parseInt((request.getParameter("costos")));
+        }
+            
+        try {
+            String  sql="UPDATE revista SET tarifa=?, revistacol=? WHERE idrevista=? ";
+                    
+        
+           PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
+           iniciarSesion.setInt(1,costo);
+         iniciarSesion.setString(2, "activo");
+           iniciarSesion.setInt(3,Integer.parseInt(request.getParameter("btn")));
+          
+           iniciarSesion.executeUpdate();
+     
+       } catch (SQLException ex) {
+                   
+   s.print(ex.getMessage());
+            }
+       
     }
 
     /**
@@ -153,8 +150,8 @@ import javax.servlet.http.Part;
            
          }
         
-      String sql = "INSERT INTO revista (nombre, username, idcategoria, costo,revistaG, descripcion, tarifa) VALUES(?,"
-              + " ?, ?,?, ?,?,? );";  
+      String sql = "INSERT INTO revista (nombre, username, idcategoria, costo,revistaG, descripcion, tarifa, revistacol) VALUES(?,"
+              + " ?, ?,?, ?,?,?,? );";  
       PreparedStatement ps2 = null;
         try {
             ps2 = iniciarConeccion.coneccion.prepareStatement(sql);
@@ -165,11 +162,12 @@ import javax.servlet.http.Part;
             ps2.setBlob(5, input);
             ps2.setString(6, descripcion);
             ps2.setInt(7, 1);
+            ps2.setString(8, "descativo");
             ps2.executeUpdate();
            
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-          response.sendRedirect("Editor/Editor.jsp");
+            response.sendRedirect("Editor/Editor.jsp");
+        
         } 
       response.sendRedirect("Editor/Editor.jsp");    
     }

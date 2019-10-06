@@ -42,7 +42,7 @@
                %>
              <%HttpSession Sesions=request.getSession();
              ;
-             out.print(Sesions.getAttribute("usuario"));
+            
         %>
         <script type="text/javascript">
 function check(e)
@@ -57,7 +57,7 @@ if (document.form.elements[e-1].checked==false){document.form.elements[e].disabl
                     <li><a href="revistas-Editor.jsp" >Revistas</a></li>
                     <li><a href="perfil-editor.jsp" target="blank">perfil</a></li>
                     <li><a href="Editor.jsp">crearRevista</a></li>
-                                                
+                                               
                 </ul>
             </nav>  
 

@@ -27,7 +27,7 @@ public class categoria {
          PreparedStatement read2=null;
          String sql2=null;
          ResultSet sesion2=null;
-         sql2="select * FROM revista WHERE idcategoria=? ";
+         sql2="select * FROM revista WHERE idcategoria=? &&  revistacol='activo' ";
          
          
          
@@ -120,6 +120,27 @@ public class categoria {
         try {
             String sql="select a.nombre, b.username, a.idrevista FROM revista a join editor b on (a.username =b.username)";
             PreparedStatement categoria =iniciarConeccion.coneccion.prepareStatement(sql);
+           ResultSet sesion=categoria.executeQuery();
+            while(sesion.next()){
+              
+                revista tmp=new revista(sesion.getString("username"),
+                sesion.getString("nombre"), sesion.getInt("idrevista"));
+                revistas.add(tmp);
+            }
+             
+            } catch (SQLException ex) {
+               
+            }
+ return revistas;}
+  public static LinkedList llenarCatporRevista(){
+ LinkedList <revista > revistas=new LinkedList();
+     if(iniciarConeccion.coneccion==null){
+            iniciarConeccion.IniciarConeccion();
+            }
+        try {
+            String sql="select a.nombre, b.username, a.idrevista FROM revista a join editor b on (a.username =b.username) where a.revistacol=?";
+            PreparedStatement categoria =iniciarConeccion.coneccion.prepareStatement(sql);
+            categoria.setString(1, "descativo");
            ResultSet sesion=categoria.executeQuery();
             while(sesion.next()){
               

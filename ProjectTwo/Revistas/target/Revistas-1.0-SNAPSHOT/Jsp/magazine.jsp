@@ -160,7 +160,7 @@
                
                
            sql="select a.idrevista, a.nombre, a.descripcion FROM revista a join suscripcion b on a.idrevista=b.idrevista"
-                   + " where b.estado='activo' && b.user=?";
+                   + " where b.estado='activo'  && b.user=?";
           read=iniciarConeccion.coneccion.prepareStatement(sql);
           read.setString(1, Sesions.getAttribute("usuario").toString());
           int count=0;

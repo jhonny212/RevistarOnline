@@ -18,12 +18,9 @@
         <title>JSP Page</title>
     </head>
     <body>
-          <header>
+        <header>
               
               <% 
-                   if(iniciarConeccion.coneccion==null){
-                           iniciarConeccion.IniciarConeccion();
-                           }
                char as='"';    
           String cadenas=Character.toString(as);
           String id=request.getParameter("id");
@@ -31,11 +28,16 @@
             <nav class="navegacion">
                     <ul class="menu">
                        <% 
-                         out.print("<li><a href="+cadenas+"likes.jsp?id="+id+cadenas+">Likes</a></li>");
-                        out.print("<li><a href="+cadenas+"comentadas.jsp?id="+id+cadenas+">Comentarios</a></li>");
+                           if(iniciarConeccion.coneccion==null){
+                           iniciarConeccion.IniciarConeccion();
+                           }
+                        out.print("<li><a href="+cadenas+"comentadas.jsp?id="+id+cadenas+">comentarios</a></li>");
+                        out.print("<li><a href="+cadenas+"fijarCosto.jsp?id="+id+cadenas+">fijar costos</a></li>");
+                         out.print("<li><a href="+cadenas+"funcionesAdmin.jsp?id="+id+cadenas+">funciones admin</a></li>");
                          out.print("<li><a href="+cadenas+"ganancias.jsp?id="+id+cadenas+">Ganancias</a></li>");
-                       
-                        %>
+                         out.print("<li><a href="+cadenas+"likes.jsp?id="+id+cadenas+">likes</a></li>");
+                         out.print("<li><a href="+cadenas+"revistas.jsp?id="+id+cadenas+">revistas</a></li>");
+                         %>
                             
                         
                         

@@ -96,7 +96,9 @@ public class admin extends HttpServlet {
         processRequest(request, response);
         
         
-        
+        if(iniciarConeccion.coneccion==null){
+        iniciarConeccion.IniciarConeccion();
+        }
         
         
           try {
@@ -116,10 +118,11 @@ public class admin extends HttpServlet {
           if(valid){
           
           }
-              
+              response.sendRedirect("Administrador/funcionesAdmin.jsp");   
             } catch (SQLException ex) {
-               
+               response.sendRedirect("Administrador/admin.jsp");  
             }
+          
     }
 
     /**
