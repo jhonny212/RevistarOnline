@@ -7,25 +7,22 @@ package servlets;
 
 import classes.iniciarConeccion;
 import java.io.IOException;
-
+import java.io.PrintWriter;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import classes.usuario;
-import java.io.PrintWriter;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author jhonny
  */
-@WebServlet(name = "CrearUsuario", urlPatterns = {"/CrearUser"})
-public class crearUsuario extends HttpServlet {
+@WebServlet(name = "delete", urlPatterns = {"/delete"})
+public class delete extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,11 +35,7 @@ public class crearUsuario extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //    response.setContentType("text/html;charset=UTF-8");
-        
-      
-    
-        
+     
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -58,12 +51,22 @@ public class crearUsuario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
-        
-        
-        
-        
-        
+           PrintWriter s=response.getWriter();
+          PreparedStatement read3=null;
+            String sql3=null;
+            
+        try {
+           
+            sql3="delete from suscripcion where user=? && idrevista=?";
+            read3=iniciarConeccion.coneccion.prepareStatement(sql3);
+            read3.setString(1, request.getParameter("user"));
+            read3.setInt(2, Integer.parseInt(request.getParameter("id")));
+            read3.executeUpdate();
+        } catch (SQLException ex) {
+        }
+        response.sendRedirect("Editor/Editor.jsp");
+             
+         
     }
 
     /**
@@ -76,49 +79,11 @@ public class crearUsuario extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    {
-        
-         
-             usuario user=new usuario(request);
-        user.registrarUsuario(user);
-       
-        
-        if(usuario.message.equals("registrado")){
-                 try {
-                     // RequestDispatcher dispatcher = request.getRequestDispatcher("Jsp/registrar.jsp");
-                     
-                       response.sendRedirect("Jsp/index.jsp");
-                     //request.setAttribute("error", true);
-                     //dispatcher.forward(request, response);
-                 } catch (IOException ex) {
-                 }
-                      
-               
-        }else{
-        
-  try {
-                     // RequestDispatcher dispatcher = request.getRequestDispatcher("Jsp/registrar.jsp");
-                     
-                     
-                     response.sendRedirect("Jsp/registrar.jsp");
-                     //request.setAttribute("error", true);
-                     //dispatcher.forward(request, response);
-                 } catch (IOException ex) {
-                 }
-        }
-        
-       
-        }
-        
-       
+            throws ServletException, IOException {
+        processRequest(request, response);
+         HttpSession Sesions=request.getSession();
       
-      
-        
-        
-        
-        
-   
-        
+           
     }
 
     /**
@@ -126,5 +91,9 @@ public class crearUsuario extends HttpServlet {
      *
      * @return a String containing servlet description
      */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
 
-
+}

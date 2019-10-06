@@ -38,14 +38,17 @@
          
                  if(usuario.message==null){
         
-            response.sendRedirect("index.jsp");
+            
+            if(iniciarSesion.tip!=null){
                 if(iniciarSesion.tip.equals("Usuario")){
      
        }else{
      
        response.sendRedirect("../Editor/Editor.jsp");
       
-       } 
+       } }else{
+            
+            response.sendRedirect("index.jsp");}
         }
          
                
@@ -57,6 +60,7 @@
                 <li><a href="index.jsp?cerrar=true">Cerrar sesion</a></li>
                 <li><a href="../Jsp/perfil-usuario.jsp">Perfil</a></li>
                 <li><a href="magazine.jsp?name=suscripciones">Suscripciones</a></li>
+                <li><a href="magazine.jsp?name=delete">Eliminar suscripcion</a></li>
                 <li><a href="hacerPago.jsp">Pagos</a></li>
                 
               
@@ -111,12 +115,16 @@
         String sql2=null;
         ResultSet sesion2=null;
         
+          PreparedStatement read3=null;
+        String sql3=null;
+        ResultSet sesion3=null;
+        
         
          char as='"';    
              String agr=Sesions.getAttribute("usuario").toString();
           String cadenas=Character.toString(as);
-           if( !request.getParameter("name").equals("suscripciones")) {
-               
+           if( !request.getParameter("name").equals("suscripciones") && !request.getParameter("name").equals("delete")) {
+          
                LinkedList <revista> lis=categoria.list(agr, request.getParameter("name"));
                
            
@@ -145,19 +153,10 @@
       
            
            
-           }else{
+           }else if(request.getParameter("name").equals("suscripciones")){
             
-          sql2="select versiones.idrevista from versiones  WHERE versiones.idrevista=?";
-          read2=iniciarConeccion.coneccion.prepareStatement(sql2);
-          read2.setString(1, Sesions.getAttribute("usuario").toString());
-          sesion2=read2.executeQuery();
-       
-               
-              if(sesion2.next()){
-              
-              
-              }
-               
+          
+                  
                
                
            sql="select a.idrevista, a.nombre, a.descripcion FROM revista a join suscripcion b on a.idrevista=b.idrevista"
@@ -170,6 +169,7 @@
          
        
               while(sesion.next()){
+                  
                   sql2="select versiones.idrevista from versiones  WHERE versiones.idrevista=?";
           read2=iniciarConeccion.coneccion.prepareStatement(sql2);
           read2.setInt(1,sesion.getInt("idrevista"));
@@ -185,7 +185,7 @@
                                     + "><img  src="+cadenas+"../Imagenes/mpdf.png"+cadenas+" style="+cadenas+"width: 50px; height:50px;"+cadenas+
                     "></a><a href="+cadenas+"comentario"
                             + "Megusta.jsp?id="+sesion.getInt("idrevista")+cadenas+" tar"
-                                    + "get="+cadenas+"_blank"+cadenas+" >comentarios </a>";   
+                                    + "get="+cadenas+"_blank"+cadenas+" >Datos  </a>";   
                    
               
               }
@@ -205,15 +205,39 @@
                                     + "><img  src="+cadenas+"../Imagenes/mpdf.png"+cadenas+" style="+cadenas+"width: 50px; height:50px;"+cadenas+
                     "></a><a href="+cadenas+"comentario"
                             + "Megusta.jsp?id="+sesion.getInt("idrevista")+cadenas+" tar"
-                                    + "get="+cadenas+"_blank"+cadenas+" >comentarios </a>"
+                                    + "get="+cadenas+"_blank"+cadenas+" >Datos </a>"
                             
                     + ""+newVersion+"</td>"
                             + "</tr>");
             count++;
            }
      
+           }else if(request.getParameter("name").equals("delete")){
+               
+           sql3="select * from suscripcion  WHERE user=?";
+          read3=iniciarConeccion.coneccion.prepareStatement(sql3);
+          read3.setString(1, Sesions.getAttribute("usuario").toString());
+          sesion3=read3.executeQuery();
+       
+               
+              if(sesion3.next()){
+              out.print("<tr>"
+                    + "<td style="+cadenas+"font-size: 20px; text-align: center;"+cadenas+
+                    "> "
+                    + sesion3.getString("user")
+                    + "</td>"
+                    + "<td>"
+                    
+                    + "</td>"
+                    + "<td>"
+                    + "<a href="+cadenas+"/Revistas/magazine?id="+sesion3.getInt("idrevista")+cadenas+"> Eliminar</a>"
+                            
+                    +"</td>"
+                            + "</tr>");
+              
+              }
            }
-         
+       
             } catch (SQLException ex) {
                 out.print(ex.getMessage());
             }

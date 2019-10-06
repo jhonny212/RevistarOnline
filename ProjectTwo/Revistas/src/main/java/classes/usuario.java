@@ -431,10 +431,10 @@ public class usuario {
             }
         try {
            String sql=null;
-           sql="SELECT * FROM editor WHERE username=?   " ;
+           sql="select a.username, a.nombre,a.sexo, a.nacimiento, a.edad, a.direccion, a.descripcion from editor a join revista b on a.username=b.username where idrevista=? " ;
            
            PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
-           iniciarSesion.setString(1, user);
+           iniciarSesion.setInt(1, Integer.parseInt(user));
       ResultSet sesion=iniciarSesion.executeQuery();
         
            while(sesion.next()){

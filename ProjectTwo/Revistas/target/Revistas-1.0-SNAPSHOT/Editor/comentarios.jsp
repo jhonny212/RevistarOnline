@@ -23,13 +23,19 @@
     </head>
     <body>
            <%
-                 if(usuario.message==null){
+     if(usuario.message==null){
         
-            response.sendRedirect("../Jsp/index.jsp");
-            if(iniciarSesion.tip.equals("Usuario")){
+            if(iniciarSesion.tip!=null){
+                    if(iniciarSesion.tip.equals("Usuario")){
        response.sendRedirect("../Jsp/magazine.jsp");
        
-       } 
+       }else{
+       response.sendRedirect("../Jsp/index.jsp");
+                    
+                    }
+            }
+            
+         
         }
           
                
@@ -63,7 +69,7 @@
                         <br>
         <%HttpSession Sesions=request.getSession();
                   usuario tmp=new usuario();
-                  tmp=usuario.userDatos(Sesions.getAttribute("usuario").toString());
+                  tmp=usuario.userDatos(request.getParameter("id"));
                    char a='"';    
                 String cadena=Character.toString(a);
                   

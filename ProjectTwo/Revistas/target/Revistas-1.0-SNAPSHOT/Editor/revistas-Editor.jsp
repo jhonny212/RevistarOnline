@@ -47,13 +47,19 @@
     </script>
     </head>
    <%
-                 if(usuario.message==null){
+                  if(usuario.message==null){
         
-            response.sendRedirect("../Jsp/index.jsp");
-            if(iniciarSesion.tip.equals("Usuario")){
+            if(iniciarSesion.tip!=null){
+                    if(iniciarSesion.tip.equals("Usuario")){
        response.sendRedirect("../Jsp/magazine.jsp");
        
-       } 
+       }else{
+       response.sendRedirect("../Jsp/index.jsp");
+                    
+                    }
+            }
+            
+         
         }
           
                
@@ -65,6 +71,7 @@
                 <li><a href="../Jsp/index.jsp?cerrar=true">Cerrar sesion</a></li>
                 <li><a href="perfil-editor.jsp" target="blank" >Perfil</a></li>
                 <li><a href="Editor.jsp">Crear revista</a> </li>
+                  <li><a href="revistas-Editor.jsp?name=delete">Eliminar suscripciones</a> </li>
                 <%
                     LinkedList <String> tmp=categoria.llenarCategoria();
                    
@@ -101,7 +108,7 @@
                           <%HttpSession Sesions=request.getSession();
         %>
                         
-                        <%if(request.getParameter("name")!=null){
+        <%if(request.getParameter("name")!=null && !request.getParameter("name").equals("delete")){
                             
                             
                         if(iniciarConeccion.coneccion==null){
@@ -143,8 +150,44 @@
                             + "</tr>");
            }
             } catch (SQLException ex) {
+                out.print(ex.getMessage());
+                
+                
+                
+                
+                
             }
-                            }
+                            }else{
+                       
+               String sql="select a.user,a.idrevista, b.descripcion from suscripcion a join revista b on a.idrevista=b.idrevista where b.username=?";
+           
+           PreparedStatement read=iniciarConeccion.coneccion.prepareStatement(sql);
+           
+
+          read.setString(1, Sesions.getAttribute("usuario").toString());
+          ResultSet sesion=read.executeQuery();
+          char as='"';    
+          String cadenas=Character.toString(as);
+           while(sesion.next()){
+            
+               
+            out.print("<tr>"
+                    + "<td>"
+                    + sesion.getString("a.user")
+                    + "</td>"
+                    + "<td>"
+                    + sesion.getString("b.descripcion")
+                    + "</td>"
+                    + "<td>"
+                    + "<a href="+cadenas+"/Revistas/delete?id="+sesion.getInt("a.idrevista")+"&user="+sesion.getString("a.user")+cadenas
+                            + "> Eliminar suscripcion</a><br>"
+                            + "</td>"
+                            + "</tr>");
+           } 
+           
+          
+                        
+                        }
                             
                         
                         

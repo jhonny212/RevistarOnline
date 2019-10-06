@@ -102,8 +102,6 @@ import javax.servlet.http.Part;
         }
         
         
-        
-        
     }
 
     /**
@@ -165,6 +163,7 @@ import javax.servlet.http.Part;
                 s.print(ex.getMessage());
             
             }
+         response.sendRedirect("Editor/Editor.jsp"); 
         
     }
 

@@ -18,23 +18,26 @@
     <body>
            <%
                
-                 if(usuario.message==null){
+                    if(usuario.message==null){
         
-            response.sendRedirect("index.jsp");
+            
+            if(iniciarSesion.tip!=null){
                 if(iniciarSesion.tip.equals("Usuario")){
-       response.sendRedirect("magazine.jsp");
-       
+     
        }else{
      
        response.sendRedirect("../Editor/Editor.jsp");
       
-       } 
+       } }else{
+            
+            response.sendRedirect("index.jsp");}
         }
+         
            
                %>
                 <%HttpSession Sesions=request.getSession();
                   usuario tmp=new usuario();
-                  tmp=usuario.userDatos(Sesions.getAttribute("usuario").toString());
+                  tmp=usuario.userDatos(request.getParameter("id"));
                    char a='"';    
                 String cadena=Character.toString(a);
                   
@@ -42,8 +45,7 @@
        <div class="contenedor1">
           
         <div id="c1">
-            <img src="/Revistas/perfilEditor?user="+<%= Sesions.getAttribute("usuario").toString()%>>
-                    
+            <% out.print("<img src="+cadena+"/Revistas/perfilEdit?id="+request.getParameter("id")+cadena+"height="+cadena+"150px"+cadena+"width="+cadena+"200px"+cadena+">"); %>       
         </div>
             
                <%String about=tmp.getSobreti();

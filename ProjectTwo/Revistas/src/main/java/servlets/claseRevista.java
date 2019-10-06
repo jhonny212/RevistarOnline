@@ -17,6 +17,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -119,7 +120,8 @@ import javax.servlet.http.Part;
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+                      
+       HttpSession sesion=request.getSession();
             String nombre=request.getParameter("nombre");
         String costo=request.getParameter("costo");  
         String cat1=request.getParameter("text1");  
@@ -157,17 +159,19 @@ import javax.servlet.http.Part;
         try {
             ps2 = iniciarConeccion.coneccion.prepareStatement(sql);
             ps2.setString(1,nombre);
-            ps2.setString(2, "user111");
+            ps2.setString(2, sesion.getAttribute("usuario").toString());
             ps2.setString(3, cat1);
             ps2.setInt(4, 10);
             ps2.setBlob(5, input);
             ps2.setString(6, descripcion);
             ps2.setInt(7, 1);
             ps2.executeUpdate();
+           
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
+          response.sendRedirect("Editor/Editor.jsp");
         } 
-         
+      response.sendRedirect("Editor/Editor.jsp");    
     }
 
     /**

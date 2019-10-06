@@ -17,18 +17,7 @@
         
            <%
                
-                 if(usuario.message==null){
         
-            response.sendRedirect("index.jsp");
-                if(iniciarSesion.tip.equals("Usuario")){
-      
-       
-       }else{
-     
-       response.sendRedirect("../Editor/Editor.jsp");
-      
-       } 
-        }
            
                %>
            <header>

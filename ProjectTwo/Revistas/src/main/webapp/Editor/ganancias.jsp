@@ -23,13 +23,19 @@
     <body>
           <header>
                  <%
-                 if(usuario.message==null){
+                  if(usuario.message==null){
         
-            response.sendRedirect("../Jsp/index.jsp");
-            if(iniciarSesion.tip.equals("Usuario")){
+            if(iniciarSesion.tip!=null){
+                    if(iniciarSesion.tip.equals("Usuario")){
        response.sendRedirect("../Jsp/magazine.jsp");
        
-       } 
+       }else{
+       response.sendRedirect("../Jsp/index.jsp");
+                    
+                    }
+            }
+            
+         
         }
           
                

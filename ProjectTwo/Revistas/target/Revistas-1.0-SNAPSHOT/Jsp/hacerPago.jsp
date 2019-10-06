@@ -24,20 +24,21 @@
               
                        
                  <%
-                 if(usuario.message==null){
+                   if(usuario.message==null){
         
-            response.sendRedirect("index.jsp");
+            
+            if(iniciarSesion.tip!=null){
                 if(iniciarSesion.tip.equals("Usuario")){
-   
-       
+     
        }else{
      
        response.sendRedirect("../Editor/Editor.jsp");
       
-       } 
+       } }else{
+            
+            response.sendRedirect("index.jsp");}
         }
-         
-               
+            
                %>
     
                       

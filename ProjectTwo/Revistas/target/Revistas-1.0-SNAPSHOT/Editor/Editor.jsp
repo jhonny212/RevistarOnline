@@ -24,18 +24,25 @@
     <body>
         
            <%
-                 if(usuario.message==null){
+                   if(usuario.message==null){
         
-            response.sendRedirect("../Jsp/index.jsp");
-            if(iniciarSesion.tip.equals("Usuario")){
+            if(iniciarSesion.tip!=null){
+                    if(iniciarSesion.tip.equals("Usuario")){
        response.sendRedirect("../Jsp/magazine.jsp");
        
-       } 
+       }else{
+       response.sendRedirect("../Jsp/index.jsp");
+                    
+                    }
+            }
+            
+         
         }
-          
                
                %>
              <%HttpSession Sesions=request.getSession();
+             ;
+             out.print(Sesions.getAttribute("usuario"));
         %>
         <script type="text/javascript">
 function check(e)
@@ -60,9 +67,7 @@ if (document.form.elements[e-1].checked==false){document.form.elements[e].disabl
             <div id="categoria">
                 <input type="checkbox" name="check1" onclick="check(1)"  />
                 <input type="text" name="text1"   placeholder="crear nueva categoria" /> 
-               <textarea name="descripcion" cols="30"  required rows="10">
-                
-               </textarea>
+               <textarea name="descripcion" cols="30"  required rows="10">Descripcion</textarea>
                
             </div>
             
