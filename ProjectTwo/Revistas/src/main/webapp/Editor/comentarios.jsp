@@ -102,14 +102,14 @@
                         f2=request.getParameter("f2");
                         
                                }
-             String  sql="select comentario, user from comentario WHERE (idrevista=? && user=? "
+             String  sql="select comentario, user from comentario WHERE (idrevista=? "
                     + "&&( fecha between '"+f1+"' and  '"+f2+"' )) ";
          
                     
         
            PreparedStatement iniciarSesion=iniciarConeccion.coneccion.prepareStatement(sql);
            iniciarSesion.setInt(1,Integer.parseInt(request.getParameter("id")));
-           iniciarSesion.setString(2, sesion.getAttribute("usuario").toString());
+
          
           
            ResultSet res=iniciarSesion.executeQuery();

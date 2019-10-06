@@ -43,7 +43,7 @@
                %>
          <%HttpSession Sesions=request.getSession();
                   usuario tmp=new usuario();
-                  tmp=usuario.userDatos(Sesions.getAttribute("usuario").toString());
+                  tmp=usuario.userDatos(request.getParameter("id"));
                    char a='"';    
                 String cadena=Character.toString(a);
                   
@@ -95,7 +95,7 @@
         </div>
         <% 
         String ids=request.getParameter("id");
-        out.print(ids+"holaaaaa");
+    
         %>
        </div>
         

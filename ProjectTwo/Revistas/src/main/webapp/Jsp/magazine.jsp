@@ -35,8 +35,7 @@
         <%@include file="../Html/ArchivoRevista.html" %>
         <% HttpSession Sesions=request.getSession();
         revista.actualizarSuscripcion();
-         
-                 if(usuario.message==null){
+                if(usuario.message==null){
         
             
             if(iniciarSesion.tip!=null){

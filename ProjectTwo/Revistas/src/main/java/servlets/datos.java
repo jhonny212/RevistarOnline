@@ -113,7 +113,6 @@ public class datos extends HttpServlet {
             }
         
         
-           response.sendRedirect("Administrador/funcionesAdmin.jsp");
         }
         /*if(Integer.parseInt( request.getParameter("porcentaje"))==0    
                 || Integer.parseInt( request.getParameter("costo"))==0){
@@ -126,9 +125,8 @@ public class datos extends HttpServlet {
         }
         */
         
-        response.sendRedirect("Administrador/funcionesAdmin.jsp");
-        
-    }
+         response.sendRedirect("Administrador/funcionesAdmin.jsp");
+      }
 
     /**
      * Returns a short description of the servlet.
