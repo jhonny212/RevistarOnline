@@ -72,7 +72,7 @@ public class datos extends HttpServlet {
    s.print(ex.getMessage());
             }
         
-        
+        response.sendRedirect("Administrador/funcionesAdmin.jsp");
     }
 
     /**
@@ -113,7 +113,7 @@ public class datos extends HttpServlet {
             }
         
         
-        
+           response.sendRedirect("Administrador/funcionesAdmin.jsp");
         }
         /*if(Integer.parseInt( request.getParameter("porcentaje"))==0    
                 || Integer.parseInt( request.getParameter("costo"))==0){
@@ -126,6 +126,7 @@ public class datos extends HttpServlet {
         }
         */
         
+        response.sendRedirect("Administrador/funcionesAdmin.jsp");
         
     }
 

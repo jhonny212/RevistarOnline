@@ -103,7 +103,7 @@ public class datos2 extends HttpServlet {
    s.print(ex.getMessage());
             }
        
-        
+        response.sendRedirect("Administrador/funcionesAdmin.jsp");
     }
         
     

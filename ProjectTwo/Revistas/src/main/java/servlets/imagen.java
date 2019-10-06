@@ -170,7 +170,7 @@ import javax.servlet.http.Part;
             
             }
         
-        
+        response.sendRedirect("Jsp/perfil-usuario.jsp");
     }
 
     /**

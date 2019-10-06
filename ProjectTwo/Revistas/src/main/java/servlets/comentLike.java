@@ -100,7 +100,7 @@ java.util.Date date = null;
              crearUser.executeUpdate();
         } catch (SQLException ex) {
         }
-    
+    response.sendRedirect("Jsp/comentarioMegusta.jsp");
     }
 
     /**
@@ -142,6 +142,7 @@ java.util.Date date = null;
         PrintWriter s=response.getWriter();
         s.print(ex.getMessage());
         }
+    response.sendRedirect("Jsp/comentarioMegusta.jsp");
          
     }
 

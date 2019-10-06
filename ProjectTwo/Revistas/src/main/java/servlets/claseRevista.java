@@ -102,7 +102,7 @@ if(iniciarConeccion.coneccion==null){
                    
    s.print(ex.getMessage());
             }
-       
+       response.sendRedirect("Administrador/fijarCosto.jsp");
     }
 
     /**

@@ -154,6 +154,7 @@ java.util.Date date = null;
         } catch (SQLException ex) {
             s.print(ex.getMessage());
         }
+              response.sendRedirect("Jsp/magazine.jsp");
     }
 
     /**
@@ -189,7 +190,7 @@ java.util.Date date = null;
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        
+        response.sendRedirect("Editor/revistas-Editor.jsp");
     }
 
     /**
