@@ -89,7 +89,7 @@
         </div>
      
         <div class="contenido">
-            <img src="../Imagenes/img-perfil.jpg" alt="" class="menu-bar"> 
+            <img src="../Imagenes/PERFIL.png" alt="" class="menu-bar"> 
                           
             <div class="KindRevistas" >
               
